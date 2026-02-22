@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 const SOCIAL_LINKS = [
     {
         href: 'https://www.instagram.com/stoutirishpubto/',
@@ -18,8 +20,64 @@ const SOCIAL_LINKS = [
     },
 ]
 
+// Stout Irish Pub coordinates
+const LAT = 43.66353
+const LNG = -79.37004
+
 export default function FooterSection() {
     const year = new Date().getFullYear()
+    const mapRef = useRef<HTMLDivElement>(null)
+    const mapInstanceRef = useRef<import('leaflet').Map | null>(null)
+
+    useEffect(() => {
+        // Only initialise once
+        if (mapInstanceRef.current || !mapRef.current) return
+
+        // Dynamic import to avoid SSR issues
+        import('leaflet').then((L) => {
+            // Fix default icon paths broken by Vite bundling
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            delete (L.Icon.Default.prototype as any)._getIconUrl
+            L.Icon.Default.mergeOptions({
+                iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+                iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+                shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+            })
+
+            const map = L.map(mapRef.current!, {
+                center: [LAT, LNG],
+                zoom: 16,
+                scrollWheelZoom: false,
+                zoomControl: false,
+            })
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                className: 'map-filter',
+            }).addTo(map)
+
+            // Custom branded marker — logo in a gold-bordered circle
+            const icon = L.divIcon({
+                className: '',
+                html: `
+                  <div class="stout-pin">
+                    <img src="/logo.png" alt="" />
+                  </div>
+                `,
+                iconSize: [64, 64],
+                iconAnchor: [32, 32],
+            })
+
+            L.marker([LAT, LNG], { icon }).addTo(map)
+
+            mapInstanceRef.current = map
+        })
+
+        return () => {
+            mapInstanceRef.current?.remove()
+            mapInstanceRef.current = null
+        }
+    }, [])
 
     return (
         <footer
@@ -27,36 +85,13 @@ export default function FooterSection() {
             className="bg-primary min-h-[100dvh] w-full snap-start flex flex-col relative overflow-hidden"
             aria-label="Find Us and Hours"
         >
-            {/* Map Top Half */}
+            {/* Map Top Half — Leaflet replaces the old Google Maps iframe */}
             <div className="w-full h-[65dvh] relative border-b border-white/5">
-                <iframe
-                    title="Stout Irish Pub location on Google Maps"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.29342718917!2d-79.37021312382283!3d43.66352937109968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb3997686629%3A0xc64e12c1f964a388!2s221%20Carlton%20St%2C%20Toronto%2C%20ON%20M5A%202L2!5e0!3m2!1sen!2sca!4v1715694800000!5m2!1sen!2sca"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="absolute inset-0 map-filter"
-                />
-
-                {/* Branded logo pin — outside map-filter DIV to preserve color */}
                 <div
-                    className="absolute z-10 pointer-events-none"
-                    style={{ top: '48%', left: '50.1%', transform: 'translate(-50%, -50%)' }}
-                    aria-hidden="true"
-                >
-                    <div className="flex flex-col items-center">
-                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-primary/95 border-2 border-gold shadow-[0_0_20px_rgba(197,160,89,0.5)] flex items-center justify-center backdrop-blur-sm">
-                            <img
-                                src="/logo.png"
-                                alt=""
-                                className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
-                            />
-                        </div>
-                    </div>
-                </div>
+                    ref={mapRef}
+                    className="absolute inset-0 z-0"
+                    aria-label="Map showing Stout Irish Pub at 221 Carlton Street, Toronto"
+                />
             </div>
 
             {/* Info Bottom Half */}

@@ -1,3 +1,6 @@
+/* Leaflet map CSS — must come first */
+@import 'leaflet/dist/leaflet.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -49,6 +52,27 @@ body {
 /* ─── Map ───────────────────────────────────────────────────────────────────── */
 .map-filter {
   filter: grayscale(1) invert(0.9) contrast(1.2);
+}
+
+/* ─── Branded Leaflet Map Pin ───────────────────────────────────────────────── */
+.stout-pin {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(20, 20, 20, 0.95);
+  border: 2px solid #C5A059;
+  box-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.stout-pin img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
 }
 
 /* ─── Footer gradient rule ──────────────────────────────────────────────────── */

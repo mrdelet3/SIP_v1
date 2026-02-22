@@ -24,27 +24,27 @@ export default function EventsSection() {
     return (
         <section
             id="events"
-            className="bg-secondary h-[100dvh] md:min-h-[100dvh] md:h-auto flex flex-col justify-center snap-start py-[10vh] md:py-28 overflow-hidden md:overflow-visible"
+            className="bg-secondary h-[100dvh] md:min-h-[100dvh] md:h-auto flex flex-col justify-center snap-start py-8 md:py-28 overflow-hidden md:overflow-visible"
             aria-labelledby="events-heading"
         >
-            <div className="max-w-6xl mx-auto px-[12vw] md:px-6 w-full h-full flex flex-col justify-center">
+            <div className="max-w-6xl mx-auto px-[10vw] md:px-6 w-full flex flex-col justify-center">
 
-                <div className="grid md:grid-cols-2 gap-10 md:gap-0 items-start">
+                <div className="grid md:grid-cols-2 gap-6 md:gap-0 items-start">
 
                     {/* Events column */}
                     <div className="md:border-r md:border-white/10 md:pr-16">
-                        <div className="text-center mb-12">
-                            <h2 id="events-heading" className="font-display text-2xl sm:text-3xl md:text-4xl text-white font-bold tracking-[0.2em] uppercase mb-4">Weekly Events</h2>
+                        <div className="text-center mb-6 md:mb-12">
+                            <h2 id="events-heading" className="font-display text-xl sm:text-3xl md:text-4xl text-white font-bold tracking-[0.2em] uppercase mb-3 md:mb-4">Weekly Events</h2>
                             <div className="w-12 h-px bg-gold mx-auto" aria-hidden="true" />
                         </div>
 
-                        <ul className="space-y-8 mb-14" aria-label="Weekly events">
+                        <ul className="space-y-4 md:space-y-8 mb-6 md:mb-14" aria-label="Weekly events">
                             {EVENTS.map((event) => (
-                                <li key={event.name} className="border-l border-white/10 pl-6 py-1 hover:border-gold transition-colors group cursor-default">
-                                    <h3 className="font-display text-white text-base tracking-[0.2em] uppercase font-bold group-hover:text-gold transition-colors mb-1">
+                                <li key={event.name} className="border-l border-white/10 pl-5 py-1 hover:border-gold transition-colors group cursor-default">
+                                    <h3 className="font-display text-white text-sm md:text-base tracking-[0.2em] uppercase font-bold group-hover:text-gold transition-colors mb-0.5">
                                         {event.name}
                                     </h3>
-                                    <p className="font-sans font-light text-gray-400 text-sm">
+                                    <p className="font-sans font-light text-gray-400 text-xs md:text-sm">
                                         {event.schedule}
                                     </p>
                                 </li>
@@ -66,17 +66,17 @@ export default function EventsSection() {
 
                     {/* Happy Hour column */}
                     <div className="md:pl-16">
-                        <div className="text-center mb-12">
-                            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-white font-bold tracking-[0.2em] uppercase mb-4">Happy Hour</h2>
+                        <div className="text-center mb-6 md:mb-12">
+                            <h2 className="font-display text-xl sm:text-3xl md:text-4xl text-white font-bold tracking-[0.2em] uppercase mb-3 md:mb-4">Happy Hour</h2>
                             <div className="w-12 h-px bg-gold mx-auto" aria-hidden="true" />
                         </div>
 
-                        <p className="font-serif font-light text-gray-300 text-base md:text-lg leading-relaxed italic mb-8 text-center md:text-right">
+                        <p className="font-serif font-light text-gray-300 text-sm md:text-lg leading-relaxed italic mb-5 md:mb-8 text-center md:text-right">
                             Experience the nocturnal charm of Stout Irish Pub with our 'Happy Hour'.
                         </p>
 
                         <div className="border-r-0 md:border-r md:border-white/10 md:pr-6 py-2 text-center md:text-right">
-                            <p className="text-white font-bold text-sm mb-5 tracking-[0.2em] uppercase">
+                            <p className="text-white font-bold text-xs md:text-sm mb-3 md:mb-5 tracking-[0.2em] uppercase">
                                 Everyday 9:00 PM — 11:00 PM
                             </p>
                             <ul className="space-y-3 text-gray-400 uppercase text-xs tracking-[0.2em] font-light" aria-label="Happy Hour drink prices">

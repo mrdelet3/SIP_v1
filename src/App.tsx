@@ -1,10 +1,13 @@
+import { Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
-import AboutSection from './components/AboutSection'
-import MenuSection from './components/MenuSection'
-import EventsSection from './components/EventsSection'
-import FooterSection from './components/FooterSection'
-import ScrollToTop from './components/ScrollToTop'
+
+// Lazy loaded components (below the fold)
+const AboutSection = lazy(() => import('./components/AboutSection'))
+const MenuSection = lazy(() => import('./components/MenuSection'))
+const EventsSection = lazy(() => import('./components/EventsSection'))
+const FooterSection = lazy(() => import('./components/FooterSection'))
+const ScrollToTop = lazy(() => import('./components/ScrollToTop'))
 
 export default function App() {
     return (
@@ -23,13 +26,19 @@ export default function App() {
             {/* One-page scroller sections */}
             <main id="main-content">
                 <HeroSection />
-                <AboutSection />
-                <MenuSection />
-                <EventsSection />
+
+                {/* Below the fold sections load asynchronously */}
+                <Suspense fallback={<div className="min-h-screen bg-primary" />}>
+                    <AboutSection />
+                    <MenuSection />
+                    <EventsSection />
+                </Suspense>
             </main>
 
-            <FooterSection />
-            <ScrollToTop />
+            <Suspense fallback={null}>
+                <FooterSection />
+                <ScrollToTop />
+            </Suspense>
         </>
     )
 }

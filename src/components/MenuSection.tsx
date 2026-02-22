@@ -210,8 +210,8 @@ export default function MenuSection() {
                     </div>
                 </div>
 
-                {/* Download CTA */}
-                <div className="flex justify-center mt-auto flex-shrink-0">
+                {/* Download CTA — desktop only; mobile version lives in the nav drawer */}
+                <div className="hidden md:flex justify-center mt-auto flex-shrink-0">
                     <PdfMenuButton />
                 </div>
             </div>

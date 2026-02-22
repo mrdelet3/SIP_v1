@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ChevronDown } from 'lucide-react'
+import PdfMenuButton from './PdfMenuButton'
 
 const RETAIL_ITEMS = [
     { name: "Brennan's Irish sausages pack of 8", price: '$12' },
@@ -9,7 +10,7 @@ const RETAIL_ITEMS = [
     { name: "Brennan's full Irish breakfast package", price: '$40', sub: '1 pack of sausage, 1 pack of rashers, 1 black and 1 white pudding.' }
 ]
 
-function MobileDrawerContent() {
+function MobileDrawerContent({ onClose: _onClose }: { onClose: () => void }) {
     const [retailExpanded, setRetailExpanded] = useState(false)
 
     return (
@@ -86,6 +87,11 @@ function MobileDrawerContent() {
                 >
                     Reservations
                 </a>
+            </div>
+
+            {/* PDF Download — mobile only */}
+            <div className="pt-8 pb-4">
+                <PdfMenuButton className="w-full justify-center" />
             </div>
         </>
     )
@@ -244,7 +250,7 @@ export default function Navbar() {
                         {/* Spacer row — matches the nav bar height to push content below the fixed header */}
                         <div className={`${scrolled ? 'h-[88px]' : 'h-[100px]'} transition-all duration-500`} />
                         <div className="px-5 sm:px-6 border-t border-white/10">
-                            <MobileDrawerContent />
+                            <MobileDrawerContent onClose={() => setMobileOpen(false)} />
                         </div>
                     </div>
                 )
