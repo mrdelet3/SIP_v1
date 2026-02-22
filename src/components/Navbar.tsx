@@ -2,13 +2,7 @@ import { useState, useEffect } from 'react'
 import { ChevronDown } from 'lucide-react'
 import PdfMenuButton from './PdfMenuButton'
 
-const RETAIL_ITEMS = [
-    { name: "Brennan's Irish sausages pack of 8", price: '$12' },
-    { name: "Brennan's Irish rashers pack of 6", price: '$11' },
-    { name: "Brennan's white pudding 300g", price: '$10' },
-    { name: "Brennan's black pudding 300g", price: '$10' },
-    { name: "Brennan's full Irish breakfast package", price: '$40', sub: '1 pack of sausage, 1 pack of rashers, 1 black and 1 white pudding.' }
-]
+import { RETAIL_ITEMS } from '../data/config'
 
 function MobileDrawerContent({ onClose: _onClose }: { onClose: () => void }) {
     const [retailExpanded, setRetailExpanded] = useState(false)

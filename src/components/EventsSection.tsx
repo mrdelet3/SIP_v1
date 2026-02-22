@@ -1,24 +1,4 @@
-const EVENTS = [
-    {
-        name: 'Head Scratchers Trivia',
-        schedule: 'Every Monday & Tuesday at 7PM',
-    },
-    {
-        name: 'Euchre Nite',
-        schedule: 'Every Wednesday at 7:30PM',
-    },
-    {
-        name: 'Sunday Movie Night',
-        schedule: 'Every Sunday at 5PM',
-    },
-]
-
-const HAPPY_HOUR_ITEMS = [
-    '$7 Beers & Highballs',
-    '$6 Shots',
-    '$10 Martinis',
-    'Specialty Starters',
-]
+import { EVENTS_DATA as EVENTS, HAPPY_HOUR_ITEMS } from '../data/config'
 
 export default function EventsSection() {
     return (

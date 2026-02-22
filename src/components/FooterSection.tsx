@@ -20,9 +20,11 @@ const SOCIAL_LINKS = [
     },
 ]
 
+import { SITE_CONFIG } from '../data/config'
+
 // Stout Irish Pub coordinates
-const LAT = 43.66353
-const LNG = -79.37004
+const LAT = SITE_CONFIG.location.coordinates.lat
+const LNG = SITE_CONFIG.location.coordinates.lng
 
 export default function FooterSection() {
     const year = new Date().getFullYear()
@@ -136,18 +138,12 @@ export default function FooterSection() {
                         </h2>
                         <div className="w-12 h-px bg-gold mx-auto mb-8" aria-hidden="true" />
                         <div className="font-sans text-gray-300 text-sm sm:text-base md:text-lg w-full max-w-[260px] sm:max-w-[280px] mx-auto">
-                            <div className="flex justify-between border-b border-white/5 pb-6 mb-6">
-                                <span className="font-sans text-gray-500 uppercase text-xs tracking-widest self-center">M — Th</span>
-                                <span className="font-light">11:30 AM – 11:00 PM</span>
-                            </div>
-                            <div className="flex justify-between border-b border-white/5 pb-6 mb-6">
-                                <span className="font-sans text-gray-500 uppercase text-xs tracking-widest self-center">F — S</span>
-                                <span className="font-light">11:30 AM – 12:00 AM</span>
-                            </div>
-                            <div className="flex justify-between">
-                                <span className="font-sans text-gray-500 uppercase text-xs tracking-widest self-center">Sun</span>
-                                <span className="font-light">11:00 AM – 9:00 PM</span>
-                            </div>
+                            {SITE_CONFIG.hours.map((hour, idx) => (
+                                <div key={idx} className={`flex justify-between ${idx !== SITE_CONFIG.hours.length - 1 ? 'border-b border-white/5 pb-6 mb-6' : ''}`}>
+                                    <span className="font-sans text-gray-500 uppercase text-xs tracking-widest self-center">{hour.label}</span>
+                                    <span className="font-light">{hour.time}</span>
+                                </div>
+                            ))}
                         </div>
                     </div>
 
