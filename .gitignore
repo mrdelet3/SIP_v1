@@ -1,0 +1,40 @@
+# ─── Dependencies ─────────────────────────────────────────────────────────────
+node_modules/
+
+# ─── Build output ─────────────────────────────────────────────────────────────
+dist/
+dist-ssr/
+
+# ─── Environment / secrets ────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ─── Vite / editor caches ─────────────────────────────────────────────────────
+.vite/
+.cache/
+*.local
+
+# ─── B.L.A.S.T. temp workspace ────────────────────────────────────────────────
+.tmp/
+
+# ─── OS artifacts ─────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─── Editor ───────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ─── Stray root design-reference files (not source code) ─────────────────────
+SIB_A code.html
+SIB_A.png
+StoutLOGO_transpr_1K.png
+Stout_NEWLOGO.jpeg
+hero_A_end.jpeg
+hero_A_start.jpeg
+homepage_screenshot.png

@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "brand_name": "Stout Irish Pub",
+    "description": "Core design tokens for UI implementation."
+  },
+  "colors": {
+    "primary": {
+      "DEFAULT": "#141414",
+      "foreground": "#FFFFFF"
+    },
+    "secondary": {
+      "DEFAULT": "#11221B",
+      "foreground": "#FFFFFF"
+    },
+    "accent": {
+      "DEFAULT": "#16322D",
+      "foreground": "#FFFFFF"
+    },
+    "gold": {
+      "DEFAULT": "#C5A059"
+    }
+  },
+  "typography": {
+    "font_family_display": [
+      "Cinzel",
+      "serif"
+    ],
+    "font_family_serif": [
+      "Playfair Display",
+      "serif"
+    ],
+    "font_family_sans": [
+      "Montserrat",
+      "sans-serif"
+    ],
+    "font_weight_bold": "700",
+    "font_weight_normal": "400"
+  },
+  "ui": {
+    "border_radius_default": "0.5rem",
+    "border_radius_small": "0.25rem",
+    "spacing_base_unit": "4px"
+  }
+}

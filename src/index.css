@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ──────────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  background-color: theme('colors.primary');
+  color: #e5e7eb;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────────── */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ─── Hero ──────────────────────────────────────────────────────────────────── */
+.hero-overlay {
+  background: linear-gradient(to bottom, rgba(20, 20, 20, 0.35) 0%, rgba(20, 20, 20, 0.85) 100%);
+}
+
+/* ─── Navigation ────────────────────────────────────────────────────────────── */
+.nav-link {
+  letter-spacing: 0.2em;
+  @apply transition-colors duration-300;
+}
+
+.nav-link:hover {
+  @apply text-gold;
+}
+
+/* ─── Menu Tabs ─────────────────────────────────────────────────────────────── */
+.menu-tab-active {
+  @apply text-gold;
+}
+
+/* ─── Map ───────────────────────────────────────────────────────────────────── */
+.map-filter {
+  filter: grayscale(1) invert(0.9) contrast(1.2);
+}
+
+/* ─── Footer gradient rule ──────────────────────────────────────────────────── */
+.footer-gradient {
+  background: linear-gradient(to right, #C5A059, #11221B);
+  height: 1px;
+  width: 100%;
+}
+
+/* ─── Animations ────────────────────────────────────────────────────────────── */
+@keyframes bounce-custom {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-bounce-custom {
+  animation: bounce-custom 2s infinite;
+}
+
+/* ─── Navbar scroll state ───────────────────────────────────────────────────── */
+.navbar-scrolled {
+  background-color: rgba(20, 20, 20, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ─── Buttons & Interactive ─────────────────────────────────────────────────── */
+.btn-primary {
+  @apply px-12 py-5 text-[10px] uppercase font-bold tracking-[0.4em] text-gold border border-white/10 transition-all;
+  @apply hover:text-white hover:border-gold hover:bg-gold/5 focus:outline-none focus:ring-1 focus:ring-gold focus:ring-offset-2 focus:ring-offset-secondary;
+}
+
+/* ─── Celtic Hover Pattern ──────────────────────────────────────────────────── */
+.celtic-hover {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.celtic-hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Tight square-knot Celtic interlacing pattern */
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,50 L50,20 L80,50 L50,80 Z M20,50 C10,40 10,60 20,50 M80,50 C90,40 90,60 80,50 M50,20 C40,10 60,10 50,20 M50,80 C40,90 60,90 50,80 M35,65 L65,35 M35,35 L65,65' stroke='%23C5A059' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round' opacity='0.15'/%3E%3C/svg%3E");
+  background-size: 50px;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.celtic-hover:hover::before {
+  opacity: 1;
+}
+
+.celtic-hover:hover {
+  box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
+}

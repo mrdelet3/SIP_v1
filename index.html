@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#141414" />
+
+    <!-- SEO -->
+    <title>Stout Irish Pub — Authentic Irish Experience in Toronto's Cabbagetown</title>
+    <meta name="description" content="Stout Irish Pub in Toronto's Cabbagetown neighbourhood. Authentic Irish food, craft stouts, weekly events, and a warm atmosphere. Located at 221 Carlton St." />
+    <link rel="canonical" href="https://stoutirishpub.ca/" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Stout Irish Pub — Toronto" />
+    <meta property="og:description" content="Authentic Irish food, drink, and atmosphere in Toronto's Cabbagetown." />
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:url" content="https://stoutirishpub.ca/" />
+    <meta property="og:image" content="https://stoutirishpub.ca/og-hero.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- LocalBusiness Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BarOrPub",
+      "name": "Stout Irish Pub",
+      "url": "https://stoutirishpub.ca",
+      "telephone": "+16473447676",
+      "email": "info@stoutirishpub.ca",
+      "image": "https://stoutirishpub.ca/og-hero.jpg",
+      "servesCuisine": ["Irish", "British", "Pub Food"],
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "221 Carlton Street",
+        "addressLocality": "Toronto",
+        "addressRegion": "ON",
+        "postalCode": "M5A 2L2",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.663529,
+        "longitude": -79.370213
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "11:30",
+          "closes": "23:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Friday", "Saturday"],
+          "opens": "11:30",
+          "closes": "00:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Sunday"],
+          "opens": "11:00",
+          "closes": "21:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/stoutirishpubto/"
+      ]
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-primary text-gray-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
