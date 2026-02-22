@@ -41,7 +41,7 @@ export default function AboutSection() {
             aria-labelledby="about-heading"
         >
             {/* Text + CTA block */}
-            <div className="flex-1 flex flex-col items-center justify-center text-center py-16 md:py-24 px-5 sm:px-8 md:px-6">
+            <div className="flex-1 flex flex-col items-center justify-center text-center pt-20 pb-8 md:py-24 px-5 sm:px-8 md:px-6">
                 <div className="max-w-2xl w-full mx-auto">
                     <h2
                         id="about-heading"

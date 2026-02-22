@@ -27,7 +27,7 @@ export default function EventsSection() {
             className="bg-secondary h-[100dvh] md:min-h-[100dvh] md:h-auto flex flex-col justify-center snap-start py-8 md:py-28 overflow-hidden md:overflow-visible"
             aria-labelledby="events-heading"
         >
-            <div className="max-w-6xl mx-auto px-[10vw] md:px-6 w-full flex flex-col justify-center">
+            <div className="max-w-6xl mx-auto px-[10vw] md:px-6 w-full flex flex-col justify-center pt-20 md:pt-0">
 
                 <div className="grid md:grid-cols-2 gap-6 md:gap-0 items-start">
 

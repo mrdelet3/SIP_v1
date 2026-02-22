@@ -147,7 +147,7 @@ export default function MenuSection() {
             className="bg-primary h-[100dvh] md:min-h-[100dvh] md:h-auto flex flex-col justify-center snap-start py-[8vh] md:py-60 overflow-hidden md:overflow-visible"
             aria-labelledby="menu-heading"
         >
-            <div className="max-w-6xl mx-auto px-[12vw] md:px-6 w-full h-full flex flex-col">
+            <div className="max-w-6xl mx-auto px-[12vw] md:px-6 w-full h-full flex flex-col pt-20 md:pt-0">
                 {/* Heading */}
                 <div className="text-center mb-6 md:mb-20">
                     <h2

@@ -9,6 +9,14 @@
 html {
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
+  /* offset snap points so fixed navbar doesn't obscure section tops on mobile */
+  scroll-padding-top: 80px;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 0px;
+  }
 }
 
 body {
@@ -106,11 +114,10 @@ body {
   animation: bounce-custom 2s infinite;
 }
 
-/* ─── Navbar scroll state ───────────────────────────────────────────────────── */
+/* ─── Navbar scroll state (padding-only change on scroll) ──────────────────── */
 .navbar-scrolled {
-  background-color: rgba(20, 20, 20, 0.95);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 /* ─── Buttons & Interactive ─────────────────────────────────────────────────── */

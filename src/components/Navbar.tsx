@@ -127,7 +127,7 @@ export default function Navbar() {
     return (
         <>
             <nav
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'navbar-scrolled py-6' : 'py-10'}`}
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[#1c1c1c]/85 backdrop-blur-md ${scrolled ? 'navbar-scrolled py-6' : 'py-10'}`}
                 aria-label="Primary navigation"
             >
                 <div className="max-w-7xl mx-auto px-5 sm:px-6 flex justify-between items-center h-full relative">
