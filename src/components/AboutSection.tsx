@@ -65,7 +65,7 @@ export default function AboutSection() {
                             href="https://www.opentable.com/r/stout-irish-pub-toronto"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-primary celtic-hover flex items-center justify-center min-w-[280px]"
+                            className="btn-site celtic-hover"
                             aria-label="Book a group reservation at Stout Irish Pub via OpenTable"
                         >
                             Book a Group Reservation

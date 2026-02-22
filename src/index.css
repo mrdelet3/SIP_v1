@@ -126,6 +126,52 @@ body {
   @apply hover:text-white hover:border-gold hover:bg-gold/5 focus:outline-none focus:ring-1 focus:ring-gold focus:ring-offset-2 focus:ring-offset-secondary;
 }
 
+/* ─── Unified Button System ─────────────────────────────────────────────────── */
+/* Base: gold border + gold text → gold fill + white text on hover */
+.btn-site {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem 3rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #C5A059;
+  border: 1px solid #C5A059;
+  background: transparent;
+  min-height: 44px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-site:hover {
+  color: #ffffff;
+  background-color: #C5A059;
+}
+
+.btn-site:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #C5A059, 0 0 0 4px rgba(197, 160, 89, 0.3);
+}
+
+/* Filled variant: gold fill + white text → white fill + dark text on hover */
+.btn-site--filled {
+  color: #ffffff;
+  background-color: #C5A059;
+  border-color: #C5A059;
+}
+
+.btn-site--filled:hover {
+  background-color: #ffffff;
+  color: #141414;
+  border-color: #ffffff;
+}
+
+
 /* ─── Celtic Hover Pattern ──────────────────────────────────────────────────── */
 .celtic-hover {
   position: relative;
@@ -151,5 +197,5 @@ body {
 }
 
 .celtic-hover:hover {
-  box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
+  box-shadow: 0 0 28px rgba(197, 160, 89, 0.4), 0 0 10px rgba(197, 160, 89, 0.2);
 }

@@ -99,11 +99,15 @@ function MobileDrawerContent({ onClose: _onClose }: { onClose: () => void }) {
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
+    const [pastHero, setPastHero] = useState(false)
     const [mobileOpen, setMobileOpen] = useState(false)
     const [retailOpen, setRetailOpen] = useState(false)
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 60)
+        const onScroll = () => {
+            setScrolled(window.scrollY > 60)
+            setPastHero(window.scrollY >= window.innerHeight * 0.85)
+        }
         window.addEventListener('scroll', onScroll, { passive: true })
 
         const handleClickOutside = (e: MouseEvent) => {
@@ -127,7 +131,7 @@ export default function Navbar() {
     return (
         <>
             <nav
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[#1c1c1c]/85 backdrop-blur-md ${scrolled ? 'navbar-scrolled py-6' : 'py-10'}`}
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${pastHero ? 'py-8' : 'bg-[#1c1c1c]/85 backdrop-blur-md'} ${scrolled && !pastHero ? 'navbar-scrolled py-6' : ''} ${!scrolled && !pastHero ? 'py-10' : ''}`}
                 aria-label="Primary navigation"
             >
                 <div className="max-w-7xl mx-auto px-5 sm:px-6 flex justify-between items-center h-full relative">
@@ -228,9 +232,9 @@ export default function Navbar() {
                             aria-controls="mobile-drawer"
                             onClick={() => setMobileOpen((prev) => !prev)}
                         >
-                            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
-                            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                            <span className={`block w-6 h-0.5 bg-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                            <span className={`block w-6 h-0.5 bg-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
+                            <span className={`block w-6 h-0.5 bg-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
                         </button>
                     </div>
                 </div>

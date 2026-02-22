@@ -56,7 +56,7 @@ export default function EventsSection() {
                                 href="https://www.instagram.com/stoutirishpubto/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-block text-center border border-gold text-gold px-8 sm:px-12 py-5 uppercase text-[11px] font-bold tracking-[0.2em] transition-all celtic-hover hover:text-white hover:bg-gold focus:outline-none focus:ring-2 focus:ring-gold min-h-[44px] flex items-center"
+                                className="btn-site celtic-hover"
                                 aria-label="Follow Stout Irish Pub on Instagram for upcoming events"
                             >
                                 Follow for Events
