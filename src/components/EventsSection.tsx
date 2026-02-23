@@ -7,7 +7,7 @@ export default function EventsSection() {
     return (
         <section
             id="events"
-            className="bg-secondary min-h-[100dvh] flex flex-col justify-center snap-start pt-16 pb-12 md:py-32 overflow-hidden md:overflow-visible relative"
+            className="bg-secondary min-h-[100dvh] flex flex-col justify-start snap-start pt-16 pb-12 md:py-32 overflow-hidden md:overflow-visible relative"
             aria-labelledby="events-heading"
         >
             <div className="max-w-6xl mx-auto px-6 md:px-6 w-full flex flex-col">
