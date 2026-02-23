@@ -9,23 +9,23 @@ export default function MenuSection() {
     return (
         <section
             id="menu"
-            className="bg-primary h-[100dvh] md:min-h-[100dvh] md:h-auto flex flex-col justify-center snap-start py-[8vh] md:py-60 overflow-hidden md:overflow-visible"
+            className="bg-primary min-h-[100dvh] md:h-auto flex flex-col justify-start snap-start pt-16 pb-12 md:py-32 overflow-hidden md:overflow-visible"
             aria-labelledby="menu-heading"
         >
-            <div className="max-w-6xl mx-auto px-[12vw] md:px-6 w-full h-full flex flex-col pt-20 md:pt-0">
+            <div className="max-w-6xl mx-auto px-6 md:px-6 w-full flex flex-col items-center">
                 {/* Heading */}
-                <div className="text-center mb-6 md:mb-20">
+                <div className="text-center mb-1 md:mb-20 h-24 flex flex-col items-center justify-center">
                     <h2
                         id="menu-heading"
-                        className="font-display text-3xl sm:text-4xl md:text-5xl text-white font-bold tracking-[0.2em] uppercase mb-4 md:mb-8"
+                        className="font-display text-xl sm:text-3xl md:text-5xl text-white font-bold tracking-[0.25em] uppercase"
                     >
                         Menu
                     </h2>
-                    <div className="w-16 h-px bg-gold mx-auto mb-6 md:mb-10" aria-hidden="true" />
+                    <div className="w-10 md:w-16 h-px bg-gold/30 mt-4 md:mt-8" aria-hidden="true" />
                 </div>
 
                 {/* Tabs */}
-                <div className="flex justify-center mb-8 md:mb-16" role="tablist" aria-label="Menu categories">
+                <div className="flex justify-center mb-8 md:mb-16 min-h-[3rem] h-auto flex-shrink-0" role="tablist" aria-label="Menu categories">
                     <div className="flex flex-wrap justify-center gap-1 sm:gap-2 md:gap-8">
                         {TABS.map((tab) => (
                             <button
@@ -47,12 +47,12 @@ export default function MenuSection() {
                 </div>
 
                 {/* Items container - scrollable on mobile to stay in one fold */}
-                <div className="flex-1 overflow-y-auto hide-scrollbar -mx-4 px-4 mb-6 md:mb-20 md:overflow-visible">
+                <div className="w-full flex-1 overflow-y-auto hide-scrollbar -mx-4 px-4 mb-6 md:mb-20 min-h-[350px] md:overflow-visible">
                     <div
                         id={`tabpanel-${activeTab}`}
                         role="tabpanel"
                         aria-labelledby={`tab-${activeTab}`}
-                        className="grid md:grid-cols-2 gap-6 md:gap-8 min-h-[200px]"
+                        className="grid md:grid-cols-2 gap-x-12 gap-y-8"
                     >
                         {MENU[activeTab].map((item) => (
                             <div

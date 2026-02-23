@@ -1,26 +1,28 @@
+import { useState } from 'react'
+
 const GALLERY_IMAGES = [
     {
-        src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCnktMQKfIWMmqRkeWfYMy13txX2M6qy5coyWhEfwwcRsS0Hu8QVGyyKC56XNAN-AM74K_7DaaEiSlnDL-po1u-VIBALuy0QihWgkz8iAPFN0KSgKnp4_l9jUPVwg42HcGAbv6CpqsQeuEKYVM2lAWSj5bGSQTC_qfyedZ_K7YloytcIqqE5X8vouHmbjJNeJr3ArxiekPid9bcBNWkD5G0Y8eU11PFnFSCgM3se7EuO8zURUuMesrDx9n1Ii1iP1_Q2nIKy-offj8',
+        src: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1200&auto=format&fit=crop',
         alt: 'Warm and inviting interior of Stout Irish Pub',
     },
     {
-        src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDA0hwOzQ4ne-U-QNYeSsPYfFlUMBxT7xJtwLBMfgMrb9tMgB6SiS5vCNRe257N0gNG9qGHfnjIlg5ipB3EtGnIGcD-laP4f6WkiY6tOnVOV1T8vQ9UuYNnaNB0WLqJ6ILZCifLgstjEhythQof5_ELElnY_44oo9Oyje7JXnbkgZfKP50UOr2m-x2CXK48Uc78kcncnFjgIlTVL6PaCrv80RJkDEDcIbrIYqt617kICM5JKYVFwDahbAH4N20ksJ9B-AfO8pvkcc4',
+        src: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=1200&auto=format&fit=crop',
         alt: 'Hearty Irish stew with bread, a traditional pub dish',
     },
     {
-        src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCGSfddp3stS8Vaaatw1wiKQouQ3JDQG5CDi86B4emnIFts_UNdmyXKmFiKxIbYb9Tgm5laduoBIhyAECC7-OhIQOiEJePqJeIh8HP6W_4bF57aGNWji81J3x5KXv7iR5IRcrU5QTtTbNeoUdnPg-fyyLbhvHCEN90bWhoo1CzAT9v5Qo5mMuYoqOdcX1Aq1VwOu5fng0_T9l4LJVmCrPce2QaNbamluh-mMATe_zR35Fk1R7w7_2849kNAxiMM-RP8BE2MMwsmdsU',
+        src: 'https://images.unsplash.com/photo-1538488881038-e252a119ace7?q=80&w=1200&auto=format&fit=crop',
         alt: 'Selection of craft beer taps behind the bar',
     },
     {
-        src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAQ1CNj7vpwE4_SstjLRFWrLFlI-8Wmyy2EZwkHUBB_LUpzGk-IdrPFxJ40CZWUoUU0j9LDKeRHQytnSFZ2XUv0SZP5sOR4QtDAhkKJ2I_VQgznrdYrxvPs5U3J-MelE8MGLFwXCzXOKPQCGCrechvt3ygnGdrNVFCC868GXCF2-RCaSZbvt3dUuBOsFUyr25IYz-2WVxnDOsfgRHs_g5BKkKlsArWnQ3CaaMLLH1XqAQc1NMtBTRtki9MYsur2fg-QWQIoPCzd0CU',
-        alt: 'Classic British-style fish and chips with tartar sauce',
+        src: 'https://images.unsplash.com/photo-1566633806327-68e152aaf26d?q=80&w=1200&auto=format&fit=crop',
+        alt: 'Gourmet bar food on a rustic table',
     },
     {
-        src: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Atmospheric pub lighting and decor',
+        src: 'https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=1200&auto=format&fit=crop',
+        alt: 'Atmospheric pub interior at dusk',
     },
     {
-        src: 'https://images.unsplash.com/photo-1543007630-9710e40e7064?q=80&w=1200&auto=format&fit=crop',
+        src: 'https://images.unsplash.com/photo-1581375221970-d86898d9cc2c?q=80&w=1200&auto=format&fit=crop',
         alt: 'A perfectly poured pint of dark stout beer',
     },
     {
@@ -34,33 +36,34 @@ const GALLERY_IMAGES = [
 ]
 
 export default function AboutSection() {
+    const [selectedImg, setSelectedImg] = useState<{ src: string; alt: string } | null>(null)
+
     return (
         <section
             id="about"
-            className="bg-secondary min-h-[100dvh] flex flex-col justify-between snap-start"
+            className="bg-secondary min-h-[100dvh] flex flex-col justify-start snap-start pt-16 pb-12 md:py-32"
             aria-labelledby="about-heading"
         >
             {/* Text + CTA block */}
-            <div className="flex-1 flex flex-col items-center justify-center text-center pt-20 pb-8 md:py-24 px-5 sm:px-8 md:px-6">
-                <div className="max-w-2xl w-full mx-auto">
-                    <h2
-                        id="about-heading"
-                        className="font-display text-3xl sm:text-4xl md:text-5xl text-white font-bold tracking-[0.2em] uppercase mb-8"
-                    >
-                        Authentic Irish
-                    </h2>
-                    <div className="w-16 h-px bg-gold mx-auto mb-8" aria-hidden="true" />
-                    <p className="text-gray-400 leading-relaxed font-light text-base md:text-lg font-sans mb-12">
-                        The food here is not only delicious but also a perfect representation of
-                        Ireland's rich tradition. Come experience the flavors for yourself and enjoy
-                        an authentic Irish dish while sipping on one of our signature beers. There's
-                        a reason why we're one of Toronto's{' '}
-                        <span className="text-gold font-semibold">(Cabbagetown)</span> best
-                        kept secrets. Come and find out why.
+            <div className="max-w-6xl mx-auto px-6 md:px-6 w-full flex flex-col items-center">
+                <div className="max-w-2xl w-full mx-auto text-center">
+                    <div className="text-center mb-1 md:mb-20 h-24 flex flex-col items-center justify-center">
+                        <h2
+                            id="about-heading"
+                            className="font-display text-xl sm:text-3xl md:text-5xl text-white font-bold tracking-[0.25em] uppercase"
+                        >
+                            Authentic Irish
+                        </h2>
+                        <div className="w-10 md:w-16 h-px bg-gold/30 mt-4 md:mt-8" aria-hidden="true" />
+                    </div>
+
+                    <p className="text-gray-400 leading-relaxed font-light text-sm md:text-lg font-sans mb-10 max-w-lg mx-auto">
+                        Experience a perfect representation of Ireland's rich tradition. Savor authentic dishes
+                        while sipping one of our signature stouts. Toronto's (Cabbagetown) best kept secret awaits.
                     </p>
 
                     {/* Group Reservation CTA */}
-                    <div className="flex flex-col items-center gap-6">
+                    <div className="flex flex-col items-center gap-6 mb-12 md:mb-20">
                         <a
                             href="https://www.opentable.com/r/stout-irish-pub-toronto"
                             target="_blank"
@@ -75,23 +78,50 @@ export default function AboutSection() {
                         </p>
                     </div>
                 </div>
-            </div>
 
-            {/* Gallery grid/strip — orientation aware */}
-            <div className="w-full overflow-hidden" aria-label="Photo gallery">
-                <div className="grid grid-cols-4 md:flex md:flex-row md:overflow-x-auto landscape:flex landscape:flex-row landscape:overflow-x-auto w-full hide-scrollbar">
-                    {GALLERY_IMAGES.map((img) => (
-                        <div key={img.alt} className="flex-none w-full md:w-1/4 lg:w-1/4 aspect-[4/3] overflow-hidden bg-primary/20">
-                            <img
-                                src={img.src}
-                                alt={img.alt}
-                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                                loading="lazy"
-                            />
-                        </div>
-                    ))}
+                {/* Gallery Strip — Grid Layout (Standardized to 6 images) */}
+                <div className="w-full" aria-label="Photo gallery">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
+                        {GALLERY_IMAGES.slice(0, 6).map((img, idx) => (
+                            <div
+                                key={img.alt + idx}
+                                className="relative aspect-[4/3] overflow-hidden rounded-sm cursor-pointer group"
+                                onClick={() => setSelectedImg(img)}
+                            >
+                                <img
+                                    src={img.src}
+                                    alt={img.alt}
+                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                                    loading="lazy"
+                                />
+                                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
+
+            {/* Lightbox Modal */}
+            {selectedImg && (
+                <div
+                    className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-10 animate-in fade-in duration-300"
+                    onClick={() => setSelectedImg(null)}
+                >
+                    <button
+                        className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
+                        aria-label="Close"
+                    >
+                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    <img
+                        src={selectedImg.src}
+                        alt={selectedImg.alt}
+                        className="max-w-full max-h-full object-contain shadow-2xl animate-in zoom-in-95 duration-500"
+                    />
+                </div>
+            )}
         </section>
     )
 }

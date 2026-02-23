@@ -56,7 +56,6 @@ export const HAPPY_HOUR_ITEMS = [
     '$7 Beers & Highballs',
     '$6 Shots',
     '$10 Martinis',
-    'Specialty Starters',
 ]
 
 export const MENU_TABS: { key: TabKey; label: string }[] = [

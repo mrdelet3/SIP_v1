@@ -13,7 +13,7 @@ function MobileDrawerContent({ onClose: _onClose }: { onClose: () => void }) {
             <div className="border-b border-white/10">
                 <a
                     href="#menu"
-                    className="flex items-center justify-between w-full py-5 text-xs uppercase font-bold text-white tracking-[0.2em] hover:text-gold transition-colors"
+                    className="flex items-center justify-between w-full py-2.5 text-xs uppercase font-bold text-white tracking-[0.2em] hover:text-gold transition-colors"
                 >
                     Menu
                 </a>
@@ -23,7 +23,7 @@ function MobileDrawerContent({ onClose: _onClose }: { onClose: () => void }) {
             <div className="border-b border-white/10">
                 <a
                     href="#events"
-                    className="flex items-center justify-between w-full py-5 text-xs uppercase font-bold text-white tracking-[0.2em] hover:text-gold transition-colors"
+                    className="flex items-center justify-between w-full py-2.5 text-xs uppercase font-bold text-white tracking-[0.2em] hover:text-gold transition-colors"
                 >
                     Events
                 </a>
@@ -33,7 +33,7 @@ function MobileDrawerContent({ onClose: _onClose }: { onClose: () => void }) {
             <div className="border-b border-white/10">
                 <a
                     href="#location"
-                    className="flex items-center justify-between w-full py-5 text-xs uppercase font-bold text-white tracking-[0.2em] hover:text-gold transition-colors"
+                    className="flex items-center justify-between w-full py-2.5 text-xs uppercase font-bold text-white tracking-[0.2em] hover:text-gold transition-colors"
                 >
                     Location &amp; Hours
                 </a>
@@ -42,7 +42,7 @@ function MobileDrawerContent({ onClose: _onClose }: { onClose: () => void }) {
             {/* Retail submenu */}
             <div className="border-b border-white/10">
                 <button
-                    className="w-full flex items-center justify-between py-5 text-xs uppercase font-bold text-white tracking-[0.2em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-inset"
+                    className="w-full flex items-center justify-between py-2.5 text-xs uppercase font-bold text-white tracking-[0.2em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-inset"
                     onClick={() => setRetailExpanded((p) => !p)}
                     aria-expanded={retailExpanded}
                 >
@@ -51,19 +51,19 @@ function MobileDrawerContent({ onClose: _onClose }: { onClose: () => void }) {
                 </button>
                 {retailExpanded && (
                     <div className="pb-5">
-                        <div className="flex justify-between items-baseline mb-2 pl-2 pr-2">
+                        <div className="flex justify-between items-baseline mb-1 pl-2 pr-2">
                             <h3 className="font-display text-lg font-normal text-white tracking-[0.2em] uppercase">Brennan's Irish Retail</h3>
                             <span className="font-serif text-xs text-gold tracking-[0.1em] uppercase">Pick-up only</span>
                         </div>
-                        <div className="w-10 h-px bg-gold mb-4 ml-2" aria-hidden="true" />
+                        <div className="w-10 h-px bg-gold mb-2 ml-2" aria-hidden="true" />
                         <div className="flex flex-col gap-0">
                             {RETAIL_ITEMS.map((item, idx) => (
-                                <div key={idx} className="flex flex-col border-l border-white/10 pl-5 py-3 hover:border-gold transition-colors">
+                                <div key={idx} className="flex flex-col border-l border-white/10 pl-5 py-1 hover:border-gold transition-colors">
                                     <div className="flex justify-between items-baseline gap-4">
-                                        <span className="font-display tracking-wide uppercase text-white font-bold text-sm leading-tight">{item.name}</span>
-                                        <span className="font-serif text-gold font-bold text-sm flex-shrink-0 ml-2">{item.price}</span>
+                                        <span className="font-sans tracking-widest uppercase text-white font-normal text-sm leading-tight">{item.name}</span>
+                                        <span className="font-serif text-gold font-normal text-lg flex-shrink-0 ml-2">{item.price}</span>
                                     </div>
-                                    {item.sub && <p className="text-gray-400 text-xs mt-2 font-serif font-light leading-relaxed">{item.sub}</p>}
+                                    {item.sub && <p className="text-gray-400 text-[11px] mt-0.5 font-serif font-light leading-relaxed">{item.sub}</p>}
                                 </div>
                             ))}
                         </div>
@@ -77,14 +77,14 @@ function MobileDrawerContent({ onClose: _onClose }: { onClose: () => void }) {
                     href="https://www.opentable.com/r/stout-irish-pub-toronto"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between w-full py-5 text-xs uppercase font-bold text-white tracking-[0.2em] hover:text-gold transition-colors"
+                    className="flex items-center justify-between w-full py-2.5 text-xs uppercase font-bold text-white tracking-[0.2em] hover:text-gold transition-colors"
                 >
                     Reservations
                 </a>
             </div>
 
             {/* PDF Download — mobile only */}
-            <div className="pt-8 pb-4">
+            <div className="pt-4 pb-4">
                 <PdfMenuButton className="w-full justify-center" />
             </div>
         </>
@@ -97,12 +97,36 @@ export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false)
     const [retailOpen, setRetailOpen] = useState(false)
 
+    const [activeSection, setActiveSection] = useState('')
+
     useEffect(() => {
         const onScroll = () => {
             setScrolled(window.scrollY > 60)
             setPastHero(window.scrollY >= window.innerHeight * 0.85)
         }
         window.addEventListener('scroll', onScroll, { passive: true })
+
+        // Intersection Observer for section titles
+        const sectionIds = ['about', 'menu', 'events', 'location']
+        const observerOptions = {
+            root: null,
+            rootMargin: '-40% 0px -40% 0px', // Center-ish of viewport
+            threshold: 0
+        }
+
+        const observerCallback = (entries: IntersectionObserverEntry[]) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id)
+                }
+            })
+        }
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions)
+        sectionIds.forEach(id => {
+            const el = document.getElementById(id)
+            if (el) observer.observe(el)
+        })
 
         const handleClickOutside = (e: MouseEvent) => {
             if (!(e.target as HTMLElement).closest('.nav-dropdown-trigger')) {
@@ -114,8 +138,19 @@ export default function Navbar() {
         return () => {
             window.removeEventListener('scroll', onScroll)
             window.removeEventListener('click', handleClickOutside)
+            observer.disconnect()
         }
     }, [])
+
+    const getSectionTitle = (id: string) => {
+        switch (id) {
+            case 'about': return 'Authentic Irish'
+            case 'menu': return 'Menu'
+            case 'events': return 'Weekly Events'
+            case 'location': return 'Find Us'
+            default: return ''
+        }
+    }
 
     const toggleRetail = (e: React.MouseEvent) => {
         e.stopPropagation()
@@ -125,10 +160,10 @@ export default function Navbar() {
     return (
         <>
             <nav
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${pastHero ? 'py-8' : 'bg-[#1c1c1c]/85 backdrop-blur-md'} ${scrolled && !pastHero ? 'navbar-scrolled py-6' : ''} ${!scrolled && !pastHero ? 'py-10' : ''}`}
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${pastHero ? 'py-3 bg-black/40 backdrop-blur-sm md:bg-black/95 md:backdrop-blur-md' : 'bg-transparent'} ${scrolled && !pastHero ? 'navbar-scrolled py-3' : ''} ${!scrolled && !pastHero ? 'py-6 md:py-10' : ''}`}
                 aria-label="Primary navigation"
             >
-                <div className="max-w-7xl mx-auto px-5 sm:px-6 flex justify-between items-center h-full relative">
+                <div className="max-w-7xl mx-auto px-5 sm:px-6 flex justify-end md:justify-between items-center h-full relative">
                     {/* Left Nav (Desktop) - 1/3 width */}
                     <div className="hidden md:flex w-1/3 items-center gap-8 md:gap-12 z-20">
                         <div className="group relative nav-dropdown-trigger">
@@ -156,11 +191,11 @@ export default function Navbar() {
                                         {RETAIL_ITEMS.map((item, idx) => (
                                             <li key={idx} className="border-l border-white/10 pl-4 py-2 hover:border-gold transition-colors group/item cursor-default">
                                                 <div className="flex justify-between items-baseline gap-8">
-                                                    <span className="font-sans tracking-[0.2em] uppercase text-white font-medium text-[11px] leading-snug">{item.name}</span>
-                                                    <span className={`font-sans text-gold font-bold tracking-[0.1em] flex-shrink-0 ml-2 ${idx === RETAIL_ITEMS.length - 1 ? 'text-sm' : 'text-xs'}`}>{item.price}</span>
+                                                    <span className="font-sans tracking-[0.2em] uppercase text-white font-normal text-[11px] leading-snug">{item.name}</span>
+                                                    <span className="font-serif text-gold font-normal text-base flex-shrink-0 ml-2">{item.price}</span>
                                                 </div>
                                                 {item.sub && (
-                                                    <p className="text-gray-400 text-[10px] mt-3 font-sans font-medium tracking-wide leading-relaxed uppercase opacity-80">{item.sub}</p>
+                                                    <p className="text-gray-400 text-[10px] mt-2 font-serif font-light leading-relaxed opacity-80">{item.sub}</p>
                                                 )}
                                             </li>
                                         ))}
@@ -179,8 +214,8 @@ export default function Navbar() {
                         </a>
                     </div>
 
-                    {/* Logo (Centered) - 1/3 width */}
-                    <div className="flex justify-center items-center md:w-1/3 z-10">
+                    {/* Logo Area — Force centered on mobile always */}
+                    <div className={`flex items-center transition-all duration-500 absolute left-1/2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0 md:w-1/3 md:justify-center ${pastHero ? 'md:scale-100' : ''}`}>
                         <a
                             href="/"
                             aria-label="Stout Irish Pub — home"
@@ -189,10 +224,19 @@ export default function Navbar() {
                             <img
                                 src="/logo.png"
                                 alt="Stout Irish Pub"
-                                className={`transition-all duration-500 object-contain ${scrolled ? 'h-8 md:h-12' : 'h-14 md:h-20'}`}
+                                className={`transition-all duration-500 object-contain ${scrolled ? 'h-6 md:h-12' : 'h-11 md:h-20'} ${pastHero ? 'h-6 sm:h-7 md:h-12' : ''}`}
                             />
                         </a>
                     </div>
+
+                    {/* Mobile Dynamic Title - Center - Aligned with Logo/Hamburger line */}
+                    {pastHero && activeSection && (
+                        <div className="md:hidden absolute left-1/2 -translate-x-1/2 flex items-center pointer-events-none">
+                            <span className="font-display text-[9px] sm:text-[10px] text-gold font-bold tracking-[0.2em] uppercase whitespace-nowrap">
+                                {getSectionTitle(activeSection)}
+                            </span>
+                        </div>
+                    )}
 
                     {/* Right Nav (Desktop) + Mobile Toggle - 1/3 width content centered right */}
                     <div className="flex items-center justify-end md:w-1/3 z-20">

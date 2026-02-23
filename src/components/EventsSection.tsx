@@ -1,42 +1,57 @@
+import { useState } from 'react'
 import { EVENTS_DATA as EVENTS, HAPPY_HOUR_ITEMS } from '../data/config'
 
 export default function EventsSection() {
+    const [isTriviaModalOpen, setIsTriviaModalOpen] = useState(false)
+
     return (
         <section
             id="events"
-            className="bg-secondary h-[100dvh] md:min-h-[100dvh] md:h-auto flex flex-col justify-center snap-start py-8 md:py-28 overflow-hidden md:overflow-visible"
+            className="bg-secondary min-h-[100dvh] flex flex-col justify-center snap-start pt-16 pb-12 md:py-32 overflow-hidden md:overflow-visible relative"
             aria-labelledby="events-heading"
         >
-            <div className="max-w-6xl mx-auto px-[10vw] md:px-6 w-full flex flex-col justify-center pt-20 md:pt-0">
+            <div className="max-w-6xl mx-auto px-6 md:px-6 w-full flex flex-col">
 
                 <div className="grid md:grid-cols-2 gap-6 md:gap-0 items-start">
 
                     {/* Events column */}
                     <div className="md:border-r md:border-white/10 md:pr-16">
-                        <div className="text-center mb-6 md:mb-12">
-                            <h2 id="events-heading" className="font-display text-xl sm:text-3xl md:text-4xl text-white font-bold tracking-[0.2em] uppercase mb-3 md:mb-4">Weekly Events</h2>
-                            <div className="w-12 h-px bg-gold mx-auto" aria-hidden="true" />
+                        <div className="text-center mb-1 md:mb-20 h-24 flex flex-col items-center justify-center">
+                            <h2 id="events-heading" className="font-display text-xl sm:text-3xl md:text-5xl text-white font-bold tracking-[0.25em] uppercase">Weekly Events</h2>
+                            <div className="w-10 md:w-16 h-px bg-gold/30 mt-4 md:mt-8" aria-hidden="true" />
                         </div>
 
-                        <ul className="space-y-4 md:space-y-8 mb-6 md:mb-14" aria-label="Weekly events">
-                            {EVENTS.map((event) => (
-                                <li key={event.name} className="border-l border-white/10 pl-5 py-1 hover:border-gold transition-colors group cursor-default">
-                                    <h3 className="font-display text-white text-sm md:text-base tracking-[0.2em] uppercase font-bold group-hover:text-gold transition-colors mb-0.5">
-                                        {event.name}
-                                    </h3>
-                                    <p className="font-sans font-light text-gray-400 text-xs md:text-sm">
-                                        {event.schedule}
-                                    </p>
-                                </li>
-                            ))}
+                        <ul className="space-y-4 md:space-y-8 mb-4 md:mb-14 mt-2" aria-label="Weekly events">
+                            {EVENTS.map((event) => {
+                                const isTrivia = event.name.toLowerCase().includes('trivia')
+                                return (
+                                    <li
+                                        key={event.name}
+                                        className={`border-l border-white/10 pl-5 py-1 hover:border-gold transition-colors group ${isTrivia ? 'cursor-pointer' : 'cursor-default'}`}
+                                        onClick={() => isTrivia && setIsTriviaModalOpen(true)}
+                                    >
+                                        <h3 className="font-display text-white text-sm md:text-base tracking-[0.2em] uppercase font-bold group-hover:text-gold transition-colors mb-0.5 flex items-center justify-between">
+                                            {event.name}
+                                            {isTrivia && (
+                                                <span className="text-[10px] text-gold tracking-widest ml-4 font-sans opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                                                    book &rarr;
+                                                </span>
+                                            )}
+                                        </h3>
+                                        <p className="font-sans font-light text-gray-400 text-xs md:text-sm">
+                                            {event.schedule}
+                                        </p>
+                                    </li>
+                                )
+                            })}
                         </ul>
 
-                        <div className="flex justify-center">
+                        <div className="flex justify-center pt-8 pb-4 md:pb-0">
                             <a
                                 href="https://www.instagram.com/stoutirishpubto/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn-site celtic-hover"
+                                className="btn-site celtic-hover mx-auto"
                                 aria-label="Follow Stout Irish Pub on Instagram for upcoming events"
                             >
                                 Follow for Events
@@ -46,32 +61,71 @@ export default function EventsSection() {
 
                     {/* Happy Hour column */}
                     <div className="md:pl-16">
-                        <div className="text-center mb-6 md:mb-12">
-                            <h2 className="font-display text-xl sm:text-3xl md:text-4xl text-white font-bold tracking-[0.2em] uppercase mb-3 md:mb-4">Happy Hour</h2>
-                            <div className="w-12 h-px bg-gold mx-auto" aria-hidden="true" />
+                        <div className="text-center mb-1 md:mb-20 h-24 flex flex-col items-center justify-center">
+                            <h2 className="font-display text-xl sm:text-3xl md:text-5xl text-white font-bold tracking-[0.25em] uppercase">Happy Hour</h2>
+                            <div className="w-10 md:w-16 h-px bg-gold/30 mt-4 md:mt-8" aria-hidden="true" />
                         </div>
 
-                        <p className="font-serif font-light text-gray-300 text-sm md:text-lg leading-relaxed italic mb-5 md:mb-8 text-center md:text-right">
-                            Experience the nocturnal charm of Stout Irish Pub with our 'Happy Hour'.
-                        </p>
-
-                        <div className="border-r-0 md:border-r md:border-white/10 md:pr-6 py-2 text-center md:text-right">
-                            <p className="text-white font-bold text-xs md:text-sm mb-3 md:mb-5 tracking-[0.2em] uppercase">
-                                Everyday 9:00 PM — 11:00 PM
+                        <div className="mt-2">
+                            <p className="font-serif font-light text-gray-300 text-sm md:text-lg leading-relaxed italic mb-4 md:mb-8 text-left md:text-right">
+                                Experience the nocturnal charm of Stout Irish Pub with our 'Happy Hour'.
                             </p>
-                            <ul className="space-y-3 text-gray-400 uppercase text-xs tracking-[0.2em] font-light" aria-label="Happy Hour drink prices">
-                                {HAPPY_HOUR_ITEMS.map((item) => (
-                                    <li key={item} className="flex items-center justify-center md:justify-end gap-3">
-                                        {item}
-                                        <span className="w-1.5 h-px bg-gold/50" />
-                                    </li>
-                                ))}
-                            </ul>
+
+                            <div className="space-y-4 md:space-y-8 flex flex-col items-start md:items-end">
+                                <div className="text-left md:text-right border-l border-white/10 pl-5 md:pl-0 md:border-l-0 md:pr-0">
+                                    <h3 className="font-display text-white text-sm md:text-base tracking-[0.2em] uppercase font-bold mb-1">
+                                        Everyday 9:00 PM — 11:00 PM
+                                    </h3>
+                                    <div className="font-serif text-gray-400 text-sm md:text-base tracking-widest uppercase flex flex-col items-start md:items-end gap-1">
+                                        {HAPPY_HOUR_ITEMS.map((item) => (
+                                            <span key={item}>{item}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
+
+            {/* External Link Redirect Modal */}
+            {isTriviaModalOpen && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm animate-in fade-in duration-300">
+                    <div
+                        className="bg-[#1a1a1a] border border-gold/30 p-8 md:p-12 max-w-md w-full text-center relative overflow-hidden shadow-2xl"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Decorative background logo */}
+                        <img src="/logo.png" className="absolute -top-12 -right-12 w-48 opacity-5 grayscale pointer-events-none" alt="" />
+
+                        <h3 className="font-display text-xl text-white font-bold tracking-[0.2em] uppercase mb-6">External Site</h3>
+                        <p className="font-sans text-gray-300 text-sm md:text-base leading-relaxed mb-8">
+                            You are about to be redirected to <span className="text-gold">Headscratchers Trivia</span> to fill out their official reservation form.
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <button
+                                onClick={() => setIsTriviaModalOpen(false)}
+                                className="px-8 py-3 border border-white/10 text-[10px] uppercase font-bold text-white tracking-[0.2em] hover:bg-white/5 transition-all"
+                            >
+                                Cancel
+                            </button>
+                            <a
+                                href="https://www.headscratcherstrivia.com/reservationform"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setIsTriviaModalOpen(false)}
+                                className="px-8 py-3 bg-gold text-[10px] uppercase font-bold text-black tracking-[0.2em] hover:bg-white transition-all shadow-lg"
+                            >
+                                Proceed
+                            </a>
+                        </div>
+                    </div>
+                    {/* Click outside to close */}
+                    <div className="absolute inset-0 -z-10" onClick={() => setIsTriviaModalOpen(false)} />
+                </div>
+            )}
         </section>
     )
 }

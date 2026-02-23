@@ -16,7 +16,7 @@ export default function PdfMenuButton({ className = '' }: PdfMenuButtonProps) {
             className={`btn-site btn-site--filled celtic-hover ${className}`}
             aria-label="Download today's Stout Irish Pub menu as a PDF"
         >
-            <span>Download PDF Menu</span>
+            <span>FULL MENU</span>
             <Download className="w-4 h-4" aria-hidden="true" />
         </a>
     )

@@ -31,7 +31,7 @@
   },
   "happyHour": {
     "schedule": "Everyday 9:00 PM – 11:00 PM",
-    "items": ["$7 Beers & Highballs", "$6 Shots", "$10 Martinis", "Specialty Starters"]
+    "items": ["$7 Beers & Highballs", "$6 Shots", "$10 Martinis"]
   }
 }
 ```

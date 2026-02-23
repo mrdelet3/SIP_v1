@@ -51,10 +51,10 @@ export default function FooterSection() {
                 zoom: 16,
                 scrollWheelZoom: false,
                 zoomControl: false,
+                attributionControl: false, // Remove default attribution control
             })
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
                 className: 'map-filter',
             }).addTo(map)
 
@@ -87,8 +87,8 @@ export default function FooterSection() {
             className="bg-primary min-h-[100dvh] w-full snap-start flex flex-col relative overflow-hidden"
             aria-label="Find Us and Hours"
         >
-            {/* Map Top Half — Leaflet replaces the old Google Maps iframe */}
-            <div className="w-full h-[65dvh] relative border-b border-white/5">
+            {/* Map Top Half — Reduced height on mobile to fit fold */}
+            <div className="w-full h-[40dvh] md:h-[65dvh] relative border-b border-white/5">
                 <div
                     ref={mapRef}
                     className="absolute inset-0 z-0"
@@ -97,17 +97,19 @@ export default function FooterSection() {
             </div>
 
             {/* Info Bottom Half */}
-            <div className="w-full min-h-[50dvh] bg-primary flex flex-col justify-between py-16 md:py-20 px-5 sm:px-8 md:px-10">
+            <div className="w-full min-h-[60dvh] md:min-h-[50dvh] bg-primary flex flex-col justify-between py-12 md:py-20 px-5 sm:px-8 md:px-10">
 
                 {/* Two-column info grid */}
-                <div className="max-w-4xl mx-auto w-full flex flex-col md:flex-row items-start justify-center gap-12 md:gap-0 mb-16">
+                <div className="max-w-4xl mx-auto w-full flex flex-col md:flex-row items-start justify-center gap-10 md:gap-0 mb-12 md:mb-16">
 
                     {/* Find Us */}
                     <div className="text-center w-full md:flex-1 md:pr-12">
-                        <h2 id="footer-heading" className="font-display text-2xl sm:text-3xl md:text-4xl text-white font-bold tracking-[0.2em] uppercase mb-4">
-                            Find Us
-                        </h2>
-                        <div className="w-12 h-px bg-gold mx-auto mb-8" aria-hidden="true" />
+                        <div className="h-24 flex flex-col items-center justify-center mb-1 md:mb-16">
+                            <h2 id="footer-heading" className="font-display text-xl sm:text-3xl md:text-5xl text-white font-bold tracking-[0.25em] uppercase">
+                                Find Us
+                            </h2>
+                            <div className="w-10 md:w-16 h-px bg-gold/30 mt-4 md:mt-8" aria-hidden="true" />
+                        </div>
                         <div className="font-sans text-gray-300 text-sm sm:text-base md:text-lg space-y-3">
                             <p className="leading-relaxed">
                                 221 Carlton Street<br />
@@ -115,13 +117,13 @@ export default function FooterSection() {
                             </p>
                             <a
                                 href="tel:+16473447676"
-                                className="text-gold font-bold tracking-wider hover:text-white transition-colors duration-300"
+                                className="block text-gold font-bold tracking-wider hover:text-white transition-colors duration-300"
                             >
                                 +1 (647) 344-7676
                             </a>
                             <a
                                 href="mailto:info@stoutirishpub.ca"
-                                className="text-xs text-gray-400 font-sans tracking-[0.3em] uppercase hover:text-gold transition-colors duration-300"
+                                className="inline-block text-[10px] md:text-xs text-gray-400 font-sans tracking-[0.15em] md:tracking-[0.3em] uppercase hover:text-gold transition-colors duration-300"
                             >
                                 info@stoutirishpub.ca
                             </a>
@@ -132,15 +134,17 @@ export default function FooterSection() {
                     <div className="hidden md:block w-px self-stretch bg-white/10 flex-shrink-0" aria-hidden="true" />
 
                     {/* Hours */}
-                    <div className="text-center w-full md:flex-1 md:pl-12">
-                        <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-white font-bold tracking-[0.2em] uppercase mb-4">
-                            Hours
-                        </h2>
-                        <div className="w-12 h-px bg-gold mx-auto mb-8" aria-hidden="true" />
+                    <div className="text-center w-full md:flex-1 md:pl-12 mt-4 md:mt-0">
+                        <div className="h-24 flex flex-col items-center justify-center mb-1 md:mb-16">
+                            <h2 className="font-display text-xl sm:text-3xl md:text-5xl text-white font-bold tracking-[0.25em] uppercase">
+                                Hours
+                            </h2>
+                            <div className="w-10 md:w-16 h-px bg-gold/30 mt-4 md:mt-8" aria-hidden="true" />
+                        </div>
                         <div className="font-sans text-gray-300 text-sm sm:text-base md:text-lg w-full max-w-[260px] sm:max-w-[280px] mx-auto">
                             {SITE_CONFIG.hours.map((hour, idx) => (
-                                <div key={idx} className={`flex justify-between ${idx !== SITE_CONFIG.hours.length - 1 ? 'border-b border-white/5 pb-6 mb-6' : ''}`}>
-                                    <span className="font-sans text-gray-500 uppercase text-xs tracking-widest self-center">{hour.label}</span>
+                                <div key={idx} className={`flex justify-between ${idx !== SITE_CONFIG.hours.length - 1 ? 'border-b border-white/5 pb-4 mb-4 md:pb-6 md:mb-6' : ''}`}>
+                                    <span className="font-sans text-gray-500 uppercase text-[9px] md:text-xs tracking-widest self-center">{hour.label}</span>
                                     <span className="font-light">{hour.time}</span>
                                 </div>
                             ))}

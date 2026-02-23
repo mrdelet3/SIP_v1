@@ -9,8 +9,6 @@
 html {
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
-  /* offset snap points so fixed navbar doesn't obscure section tops on mobile */
-  scroll-padding-top: 80px;
 }
 
 @media (min-width: 768px) {
