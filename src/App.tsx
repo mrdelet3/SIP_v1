@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
+import SplashScreen from './components/SplashScreen'
 
 // Lazy loaded components (below the fold)
 const AboutSection = lazy(() => import('./components/AboutSection'))
@@ -12,6 +13,9 @@ const ScrollToTop = lazy(() => import('./components/ScrollToTop'))
 export default function App() {
     return (
         <>
+            {/* The global pint glass splash animation */}
+            <SplashScreen />
+
             {/* Skip to main content — WCAG 2.4.1 */}
             <a
                 href="#main-content"

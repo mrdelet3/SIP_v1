@@ -112,6 +112,55 @@ body {
   animation: bounce-custom 2s infinite;
 }
 
+@keyframes splash-stout {
+  0% {
+    transform: translateY(100vh) rotate(10deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.animate-splash-stout {
+  animation: splash-stout 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+@keyframes scale-glass {
+  0% {
+    transform: scale(0.25);
+  }
+
+  100% {
+    transform: scale(50);
+  }
+}
+
+.animate-scale-glass {
+  /* No delay, start expanding immediately. Use a smoother ease-in curve. */
+  animation: scale-glass 3s cubic-bezier(0.5, 0, 0.8, 1) forwards;
+  /* Starts out scaled to 25% size */
+  transform: scale(0.25);
+}
+
+@keyframes fade-out-splash {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-fade-out-splash {
+  animation: fade-out-splash 0.3s 3s forwards;
+}
+
 /* ─── Navbar scroll state (padding-only change on scroll) ──────────────────── */
 .navbar-scrolled {
   padding-top: 1.5rem;
