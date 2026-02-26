@@ -7,16 +7,16 @@ export default function EventsSection() {
     return (
         <section
             id="events"
-            className="bg-secondary h-[100dvh] flex flex-col items-center justify-center snap-start py-16 md:py-0 overflow-hidden md:overflow-visible relative"
+            className="bg-secondary h-[100dvh] flex flex-col justify-start md:justify-center snap-start pt-24 pb-0 md:py-0 overflow-hidden md:overflow-visible relative"
             aria-labelledby="events-heading"
         >
-            <div className="max-w-5xl mx-auto px-6 md:px-6 w-full flex flex-col">
+            <div className="max-w-5xl mx-auto px-6 md:px-6 w-full flex-1 flex flex-col min-h-0 overflow-y-auto overflow-x-hidden hide-scrollbar pb-24 md:pb-0">
 
                 <div className="grid md:grid-cols-2 gap-6 md:gap-0 items-start">
 
                     {/* Events column */}
                     <div className="md:border-r md:border-white/10 md:pr-16">
-                        <div className="text-center mb-1 md:mb-20 h-24 flex flex-col items-center justify-center">
+                        <div className="text-center mb-4 md:mb-20 md:h-24 flex flex-col items-center justify-center">
                             <h2 id="events-heading" className="font-display text-xl sm:text-3xl md:text-5xl text-white font-bold tracking-[0.25em] uppercase">Weekly Events</h2>
                             <div className="w-10 md:w-16 h-px bg-gold/30 mt-4 md:mt-8" aria-hidden="true" />
                         </div>
@@ -77,7 +77,7 @@ export default function EventsSection() {
 
                     {/* Happy Hour column */}
                     <div className="md:pl-16">
-                        <div className="text-center mb-1 md:mb-20 h-24 flex flex-col items-center justify-center">
+                        <div className="text-center mb-4 md:mb-20 md:h-24 flex flex-col items-center justify-center pt-8 md:pt-0">
                             <h2 className="font-display text-xl sm:text-3xl md:text-5xl text-white font-bold tracking-[0.25em] uppercase">Happy Hour</h2>
                             <div className="w-10 md:w-16 h-px bg-gold/30 mt-4 md:mt-8" aria-hidden="true" />
                         </div>
