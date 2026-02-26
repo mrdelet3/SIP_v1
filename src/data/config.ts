@@ -4,6 +4,7 @@ export interface MenuItem {
     name: string
     price: string
     description: string
+    image?: string
 }
 
 export const SITE_CONFIG = {
@@ -75,6 +76,7 @@ export const MENU_DATA: Record<TabKey, MenuItem[]> = {
             price: '$18',
             description:
                 'House-cut corn tortillas, pickled jalapenos, shredded cheddar, cherry tomato, scallions, dressed with sour cream & salsa. Add: guacamole +5 | bacon +5 | grilled chicken breast +8',
+            image: '/images/menu/nachos.jpg',
         },
         {
             name: 'Pretzel & Dijon',
@@ -100,6 +102,7 @@ export const MENU_DATA: Record<TabKey, MenuItem[]> = {
             name: 'San Marzano Tomato Soup',
             price: '$11',
             description: 'Creamy san Marzano tomato soup with fresh grated parmesan & toasted bread.',
+            image: '/images/menu/tomato-soup.jpg',
         },
     ],
     mains: [
@@ -112,6 +115,7 @@ export const MENU_DATA: Record<TabKey, MenuItem[]> = {
             name: 'Cottage Pie',
             price: '$23',
             description: 'Ground beef with peas, carrots and onions, simmered with red wine, topped with mashed potatoes.',
+            image: '/images/menu/cottage-pie.jpg',
         },
         {
             name: 'Fish & Chips',
@@ -127,11 +131,19 @@ export const MENU_DATA: Record<TabKey, MenuItem[]> = {
             name: 'Wings & Frings',
             price: '$25',
             description: '1 lb chicken wings, hand-cut fries, onion rings, veggie sticks, blue cheese or ranch for dipping. Choice of: BBQ | BUFFALO HOT | HONEY GARLIC | DRY CAJUN | DRY CARIBBEAN | SALT & PEPPER',
+            image: '/images/menu/wings-frings.jpg',
         },
         {
             name: 'The Stout Burger',
             price: '$20',
             description: 'Charbroiled beef patty, lettuce, tomato, onion, pickles, burger sauce. Choice of side. Add: Cheese $2 | Bacon $3 | Fried Egg $2 | Gorgonzola $2 | Sauteed Mushrooms $2 | Beef Patty $6.50',
+            image: '/images/menu/burger.jpg',
+        },
+        {
+            name: 'Beef Dip',
+            price: '$21',
+            description: 'Slow roasted beef, thinly sliced on a toasted baguette with melted swiss cheese. Served with au jus for dipping and choice of side.',
+            image: '/images/menu/beef-dip.jpg',
         },
     ],
     brunch: [
@@ -139,6 +151,7 @@ export const MENU_DATA: Record<TabKey, MenuItem[]> = {
             name: 'Full Irish Breakfast',
             price: '$20',
             description: '2 fried eggs, 2 Irish rashers, 2 Irish bangers, black & white pudding, mushrooms, grilled tomato, Heinz beans, toast.',
+            image: '/images/menu/full-irish.jpg',
         },
         {
             name: 'Eggs Benedict',
