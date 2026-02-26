@@ -105,7 +105,7 @@ export default function MenuSection() {
                 </div>
             </div>
 
-            <div className="max-w-6xl mx-auto px-6 md:px-6 w-full flex-1 flex flex-col items-center relative z-10 min-h-0">
+            <div className="max-w-6xl mx-auto px-6 md:px-6 w-full flex-1 flex flex-col items-center relative z-10 min-h-0 md:justify-center">
                 {/* Heading */}
                 <div className="text-center mb-6 md:mb-16 flex flex-col items-center justify-center">
                     <h2
@@ -158,7 +158,7 @@ export default function MenuSection() {
                 {/* Items container - scrollable on mobile to stay in one fold */}
                 <div
                     ref={scrollableRef}
-                    className="w-full flex-1 overflow-y-auto overflow-x-hidden hide-scrollbar -mx-4 px-4 mb-2 md:mb-20 md:overflow-visible relative pb-16"
+                    className="w-full flex-1 md:flex-none overflow-y-auto overflow-x-hidden hide-scrollbar -mx-4 px-4 mb-2 md:mb-12 md:overflow-visible relative pb-16 md:pb-0"
                 >
                     <div
                         id={`tabpanel-${activeTab}`}
@@ -212,7 +212,7 @@ export default function MenuSection() {
                 </div>
 
                 {/* CTA Section */}
-                <div className="w-[calc(100%+3rem)] -mx-6 md:w-full md:mx-0 mt-auto flex flex-col items-center flex-shrink-0 relative">
+                <div className="w-[calc(100%+3rem)] -mx-6 md:w-full md:mx-0 mt-auto md:mt-0 flex flex-col items-center flex-shrink-0 relative">
                     <div className="relative w-full px-8 flex justify-center items-center mb-4 md:mb-6">
                         <p className="font-serif text-gray-400 italic text-[12px] md:text-sm text-center max-w-[300px] md:max-w-none leading-relaxed">
                             Our weekly feature menu keeps things interesting—new flavors, same great pub.

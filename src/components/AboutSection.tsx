@@ -2,8 +2,6 @@ import { useState } from 'react'
 
 const GALLERY_IMAGES = [
     // Exterior
-    { src: '/gallery/exterior-day-1.jpg', alt: 'Stout Irish Pub Exterior Cabbagetown' },
-    { src: '/gallery/exterior-day-2.jpg', alt: 'Cabbagetown Local Spot' },
     { src: '/gallery/exterior-night.jpg', alt: 'Stout Irish Pub at Night' },
     { src: '/gallery/exterior-sign.jpg', alt: 'Authentic Irish Pub Sign' },
     // Bar
@@ -22,15 +20,24 @@ const GALLERY_IMAGES = [
 
 export default function AboutSection() {
     const [selectedImg, setSelectedImg] = useState<{ src: string; alt: string } | null>(null)
+    const [displayImages] = useState(() => {
+        const requiredImg = GALLERY_IMAGES.find(img => img.src === '/gallery/bar-lighting.jpg')
+        const otherImages = GALLERY_IMAGES.filter(img => img.src !== '/gallery/bar-lighting.jpg')
+
+        const randomOthers = [...otherImages].sort(() => 0.5 - Math.random()).slice(0, 5)
+        const combined = requiredImg ? [requiredImg, ...randomOthers] : randomOthers
+
+        return combined.sort(() => 0.5 - Math.random())
+    })
 
     return (
         <section
             id="about"
-            className="bg-secondary h-[100dvh] flex flex-col justify-between snap-start pt-24 md:pt-40 pb-0 overflow-hidden"
+            className="bg-secondary h-[100dvh] flex flex-col snap-start overflow-hidden pt-20"
             aria-labelledby="about-heading"
         >
             {/* Text + CTA block - Centered Container */}
-            <div className="max-w-6xl mx-auto px-6 w-full flex flex-col items-center">
+            <div className="flex-1 flex flex-col items-center justify-center max-w-6xl mx-auto px-6 w-full pb-10 md:pb-20">
                 <div className="max-w-3xl w-full text-center flex flex-col items-center">
                     {/* Heading Section */}
                     <div className="flex flex-col items-center mb-6 md:mb-10">
@@ -65,12 +72,11 @@ export default function AboutSection() {
 
             {/* Full-Width Gallery Strip - Pushed to absolute bottom */}
             <div className="w-full relative mt-auto" aria-label="Photo gallery">
-                <div className="flex flex-wrap md:grid md:grid-cols-4 lg:grid-cols-7 gap-1 md:gap-2">
-                    {GALLERY_IMAGES.map((img, idx) => (
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-1 md:gap-2">
+                    {displayImages.map((img) => (
                         <div
-                            key={img.alt + idx}
-                            className={`relative aspect-[4/3] flex-1 min-w-[45%] md:min-w-0 overflow-hidden cursor-pointer group ${idx >= 6 ? 'hidden md:block' : 'block'
-                                }`}
+                            key={img.src}
+                            className="relative aspect-[8/9] md:aspect-square xl:aspect-[4/3] w-full overflow-hidden cursor-pointer group"
                             onClick={() => setSelectedImg(img)}
                         >
                             <img
