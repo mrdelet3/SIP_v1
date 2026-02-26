@@ -73,15 +73,15 @@ export const MENU_DATA: Record<TabKey, MenuItem[]> = {
     starters: [
         {
             name: 'Stout Nachos',
-            price: '$18',
+            price: '$22',
             description:
-                'House-cut corn tortillas, pickled jalapenos, shredded cheddar, cherry tomato, scallions, dressed with sour cream & salsa. Add: guacamole +5 | bacon +5 | grilled chicken breast +8',
+                'House-cut corn tortillas, pickled jalapenos, shredded cheddar, cherry tomato, scallions, dressed with sour cream & salsa. Add: guacamole +$5 | bacon +$5 | grilled chicken breast +$8',
             image: '/images/menu/nachos.jpg',
         },
         {
             name: 'Pretzel & Dijon',
             price: '$12',
-            description: 'Giant buttered & salted pretzel with Dijon mustard.',
+            description: 'Giant buttered & salted pretzel with Dijon mustard. Add cheese sauce: $3',
         },
         {
             name: 'Curry Cheese Fries',
@@ -136,14 +136,8 @@ export const MENU_DATA: Record<TabKey, MenuItem[]> = {
         {
             name: 'The Stout Burger',
             price: '$20',
-            description: 'Charbroiled beef patty, lettuce, tomato, onion, pickles, burger sauce. Choice of side. Add: Cheese $2 | Bacon $3 | Fried Egg $2 | Gorgonzola $2 | Sauteed Mushrooms $2 | Beef Patty $6.50',
+            description: 'Charbroiled beef patty, lettuce, tomato, onion, pickles, burger sauce. Choice of side. Add: Cheese +$2 | Bacon +$3 | Fried Egg +$2 | Gorgonzola +$2 | Sauteed Mushrooms +$2 | Beef Patty +$6.50',
             image: '/images/menu/burger.jpg',
-        },
-        {
-            name: 'Beef Dip',
-            price: '$21',
-            description: 'Slow roasted beef, thinly sliced on a toasted baguette with melted swiss cheese. Served with au jus for dipping and choice of side.',
-            image: '/images/menu/beef-dip.jpg',
         },
     ],
     brunch: [
@@ -232,27 +226,27 @@ export const MENU_DATA: Record<TabKey, MenuItem[]> = {
         {
             name: 'Sip Lager',
             price: '$8.50',
-            description: 'North American style Lager. ( 5% alc/vol ) 16oz.',
+            description: 'North American style Lager. (5% alc/vol) 16oz.',
         },
         {
-            name: 'LCBW PILSNER',
+            name: 'THE SOCIABLE PILSNER',
             price: '$8.50',
-            description: 'German style Pilsner. 4.7 % alc/vol, 16oz',
+            description: 'German style Pilsner. (4.7% alc/vol) 16oz.',
         },
         {
             name: 'Pommies Farmhouse Cider',
             price: '$9.25',
-            description: 'Exemplifies the crisp, fresh fruit qualities of our orchard-ripened apples with subtle undertones of bittersweet cider apples. %6.5 alc',
+            description: 'Off-dry with zesty acidity, tangy apple flavours, and a crisp, lingering finish. (6.5% alc/vol) 16oz.',
         },
         {
             name: 'Great Lakes Stout, GLB',
             price: '$8.95',
-            description: 'Aromas of chocolate and lightly roasted coffee beans. Bitter chocolate, roasted malt, and espresso notes. 4.3 ABV, 16oz.',
+            description: 'Aromas of chocolate and lightly roasted coffee beans. Bitter chocolate, roasted malt, and espresso notes. (4.3% alc/vol) 16oz.',
         },
         {
             name: 'MURPHY\'S IRISH STOUT',
             price: '$10.95',
-            description: 'Irish Dry Stout from Cork, Ireland. (4% alc/vol) 16 oz',
+            description: 'Irish Dry Stout from Cork, Ireland. (4% alc/vol) 16oz.',
         },
     ],
 

@@ -212,7 +212,7 @@ export default function MenuSection() {
                 </div>
 
                 {/* CTA Section */}
-                <div className="w-full -mx-6 mt-auto flex flex-col items-center flex-shrink-0 relative">
+                <div className="w-[calc(100%+3rem)] -mx-6 md:w-full md:mx-0 mt-auto flex flex-col items-center flex-shrink-0 relative">
                     <div className="relative w-full px-8 flex justify-center items-center mb-4 md:mb-6">
                         <p className="font-serif text-gray-400 italic text-[12px] md:text-sm text-center max-w-[300px] md:max-w-none leading-relaxed">
                             Our weekly feature menu keeps things interesting—new flavors, same great pub.
@@ -225,21 +225,32 @@ export default function MenuSection() {
                             </div>
                         )}
                     </div>
-                    <div className="w-full flex md:justify-center items-stretch md:items-center border-t border-gold/30 md:border-none">
+                    <div className="w-full grid grid-cols-3 md:flex md:justify-center items-stretch md:items-center border-t border-gold/30 md:border-none">
                         <a
                             href="https://stoutirishpub.ca/features"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 md:flex-none flex items-center justify-center gap-2 py-6 md:py-5 md:px-12 border-r border-gold/30 md:border-none hover:bg-gold/5 transition-colors group"
+                            className="btn-site btn-site--charcoal flex items-center justify-center gap-1.5 py-6 md:py-5 md:px-12 border-r border-gold/30 md:border md:rounded-sm group px-2"
                         >
-                            <span className="font-display text-[10px] md:text-[11px] text-gold md:text-white uppercase tracking-widest font-bold">FEATURE MENU</span>
-                            <Download className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold md:text-white" aria-hidden="true" />
+                            <span className="font-display text-white uppercase tracking-widest font-bold text-center leading-tight">FEATURE MENU</span>
+                            <Download className="w-3 h-3 md:w-4 md:h-4 text-white shrink-0" aria-hidden="true" />
                         </a>
 
-                        <div className="flex-1 md:flex-none flex items-center justify-center">
+                        <div className="flex items-center justify-center border-r border-gold/30 md:border-none">
                             <PdfMenuButton
-                                className="w-full h-full md:w-auto md:h-auto py-6 md:py-5 md:px-12 !bg-gold/90 md:!bg-gold !text-black !rounded-none md:!rounded-sm shadow-none !border-none"
+                                className="w-full h-full md:w-auto md:h-auto py-6 md:py-5 md:px-10 !rounded-none md:!rounded-sm shadow-none !border-none px-2"
                                 label="FULL MENU"
+                                variant="gold"
+                            />
+                        </div>
+
+                        <div className="flex items-center justify-center">
+                            <PdfMenuButton
+                                className="w-full h-full md:w-auto md:h-auto py-6 md:py-5 md:px-10 !rounded-none md:!rounded-sm shadow-none !border-none px-2"
+                                label="DRINK MENU"
+                                href="/drinks.pdf"
+                                download="Stout-Irish-Pub-Drink-Menu.pdf"
+                                variant="green"
                             />
                         </div>
                     </div>

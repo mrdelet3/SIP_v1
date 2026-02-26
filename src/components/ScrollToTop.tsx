@@ -30,7 +30,7 @@ export default function ScrollToTop() {
         <button
             onClick={scrollToTop}
             aria-label="Scroll back to top"
-            className={`fixed bottom-6 right-6 z-[100] text-gold hover:text-white transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-gold rounded-full p-3 bg-black/40 backdrop-blur-md border border-gold/40 hover:border-gold shadow-2xl ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}
+            className={`fixed bottom-28 md:bottom-6 right-6 z-[100] text-gold hover:text-white transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-gold rounded-full p-3 bg-black/40 backdrop-blur-md border border-gold/40 hover:border-gold shadow-2xl ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}
         >
             {/* Celtic-inspired Scroll Up Icon — Differentiated from landing arrow */}
             <svg
