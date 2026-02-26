@@ -214,44 +214,50 @@ export default function MenuSection() {
                 {/* CTA Section */}
                 <div className="w-[calc(100%+3rem)] -mx-6 md:w-full md:mx-0 mt-auto md:mt-0 flex flex-col items-center flex-shrink-0 relative">
                     <div className="relative w-full px-8 flex justify-center items-center mb-4 md:mb-6">
-                        <p className="font-serif text-gray-400 italic text-[12px] md:text-sm text-center max-w-[300px] md:max-w-none leading-relaxed">
+                        <p className="font-serif text-gray-400 italic text-[12px] md:text-sm text-center max-w-[300px] md:max-w-none leading-relaxed pr-14 md:pr-0">
                             Our weekly feature menu keeps things interesting—new flavors, same great pub.
                         </p>
 
                         {/* Bobbing Scroll Indicator - Mobile Only - Aligned with text */}
                         {canScroll && !isAtBottom && (
-                            <div className="md:hidden absolute right-4 pointer-events-none">
+                            <div className="md:hidden absolute right-4 md:right-auto pointer-events-none">
                                 <ChevronDown className="w-5 h-5 text-white/80 animate-bounce" strokeWidth={2} />
                             </div>
                         )}
                     </div>
-                    <div className="w-full grid grid-cols-3 md:flex md:justify-center items-stretch md:items-center border-t border-gold/30 md:border-none">
-                        <a
-                            href="https://stoutirishpub.ca/features"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-site btn-site--charcoal flex items-center justify-center gap-1.5 py-6 md:py-5 md:px-12 border-r border-gold/30 md:border md:rounded-sm group px-2"
-                        >
-                            <span className="font-display text-white uppercase tracking-widest font-bold text-center leading-tight">FEATURE MENU</span>
-                            <Download className="w-3 h-3 md:w-4 md:h-4 text-white shrink-0" aria-hidden="true" />
-                        </a>
+                    <div className="w-full flex justify-center border-t border-gold/30 md:border-none">
+                        <div className="font-display flex flex-col items-center justify-between text-[11px] gap-0 w-full md:w-auto md:flex-row md:gap-4 md:text-sm">
+                            {/* Feature Menu row - full width on mobile */}
+                            <a
+                                href="https://stoutirishpub.ca/features"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-site btn-site--charcoal flex w-full items-center justify-center gap-1.5 py-4 md:py-5 md:px-12 border-b md:border-b-0 md:border-r border-gold/30 md:border md:rounded-sm group px-2"
+                            >
+                                <span className="font-display text-white uppercase tracking-widest font-bold text-center leading-tight">FEATURE MENU</span>
+                                <Download className="w-3 h-3 md:w-4 md:h-4 text-white shrink-0" aria-hidden="true" />
+                            </a>
 
-                        <div className="flex items-center justify-center border-r border-gold/30 md:border-none">
-                            <PdfMenuButton
-                                className="w-full h-full md:w-auto md:h-auto py-6 md:py-5 md:px-10 !rounded-none md:!rounded-sm shadow-none !border-none px-2"
-                                label="FULL MENU"
-                                variant="gold"
-                            />
-                        </div>
+                            {/* Main menus row - split equally on mobile */}
+                            <div className="flex w-full md:w-auto justify-center">
+                                <div className="flex w-1/2 md:w-auto items-center justify-center border-r border-gold/30 md:border-none">
+                                    <PdfMenuButton
+                                        className="w-full h-full md:w-auto md:h-auto py-4 md:py-5 md:px-10 !rounded-none md:!rounded-sm shadow-none !border-none px-2 flex-col justify-center gap-1 md:flex-row md:gap-2"
+                                        label="FULL MENU"
+                                        variant="gold"
+                                    />
+                                </div>
 
-                        <div className="flex items-center justify-center">
-                            <PdfMenuButton
-                                className="w-full h-full md:w-auto md:h-auto py-6 md:py-5 md:px-10 !rounded-none md:!rounded-sm shadow-none !border-none px-2"
-                                label="DRINK MENU"
-                                href="/drinks.pdf"
-                                download="Stout-Irish-Pub-Drink-Menu.pdf"
-                                variant="green"
-                            />
+                                <div className="flex w-1/2 md:w-auto items-center justify-center">
+                                    <PdfMenuButton
+                                        className="w-full h-full md:w-auto md:h-auto py-4 md:py-5 md:px-10 !rounded-none md:!rounded-sm shadow-none !border-none px-2 flex-col justify-center gap-1 md:flex-row md:gap-2"
+                                        label="DRINK MENU"
+                                        href="/drinks.pdf"
+                                        download="Stout-Irish-Pub-Drink-Menu.pdf"
+                                        variant="green"
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

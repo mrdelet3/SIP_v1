@@ -87,7 +87,7 @@ export default function EventsSection() {
                                 Experience the nocturnal charm of Stout Irish Pub with our 'Happy Hour'.
                             </p>
 
-                            <div className="space-y-4 md:space-y-8 flex flex-col items-start md:items-end">
+                            <div className="space-y-4 md:space-y-8 flex flex-col items-start md:items-end pr-14 md:pr-0">
                                 <div className="text-left md:text-right border-l border-white/10 pl-5 md:pl-0 md:border-l-0 md:pr-0">
                                     <h3 className="font-display text-white text-sm md:text-base tracking-[0.2em] uppercase font-bold mb-1">
                                         Everyday 9:00 PM — 11:00 PM
