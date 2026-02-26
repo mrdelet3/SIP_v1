@@ -173,11 +173,17 @@ export default function MenuSection() {
                                 onMouseLeave={() => setHoveredItem(null)}
                                 className={`border-l border-white/10 pl-5 sm:pl-8 py-2 md:py-3 hover:border-gold transition-colors group ${item.image ? 'cursor-pointer' : 'cursor-default'}`}
                             >
-                                <div className="flex justify-between items-center mb-1 md:mb-2 gap-3">
-                                    <h3 className="font-display text-white text-sm sm:text-base md:text-xl tracking-wide uppercase leading-snug transition-colors group-hover:text-gold">
-                                        {item.name}
-                                    </h3>
-                                    <div className="flex-shrink-0">
+                                <div className="grid grid-cols-[1fr_auto] gap-4 items-start mb-1 md:mb-2">
+                                    <div className="flex flex-col gap-1 md:gap-2">
+                                        <h3 className="font-display text-white text-sm sm:text-base md:text-xl tracking-wide uppercase leading-snug transition-colors group-hover:text-gold">
+                                            {item.name}
+                                        </h3>
+                                        <p className="text-gray-400 font-sans text-xs sm:text-sm font-light leading-relaxed">
+                                            {item.description}
+                                        </p>
+                                    </div>
+
+                                    <div className="flex-shrink-0 pt-0.5 sm:pt-1">
                                         {item.price.includes('/') ? (
                                             <div className="flex items-center">
                                                 {item.price.split('/').map((part, index, array) => (
@@ -197,15 +203,12 @@ export default function MenuSection() {
                                                 ))}
                                             </div>
                                         ) : (
-                                            <span className="font-sans text-gold font-bold text-sm sm:text-base md:text-xl transition-colors group-hover:text-white">
+                                            <span className="font-sans text-gold font-bold text-sm sm:text-base md:text-xl transition-colors group-hover:text-white whitespace-nowrap">
                                                 {item.price}
                                             </span>
                                         )}
                                     </div>
                                 </div>
-                                <p className="text-gray-400 font-sans text-xs sm:text-sm font-light leading-relaxed">
-                                    {item.description}
-                                </p>
                             </div>
                         ))}
                     </div>
