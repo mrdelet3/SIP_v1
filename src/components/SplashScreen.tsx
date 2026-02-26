@@ -3,14 +3,18 @@ import { useState, useEffect } from 'react'
 export default function SplashScreen() {
     const [isVisible, setIsVisible] = useState(true)
 
-    // Ensure scroll is locked during animation
+    // Ensure scroll is locked during initial animation phase
     useEffect(() => {
         if (isVisible) {
             document.body.style.overflow = 'hidden'
+
+            // Restore scrolling as soon as the cutout clears the edges (approx 1.8s)
+            const restoreScrollTimer = setTimeout(() => {
+                document.body.style.overflow = ''
+            }, 1800)
+
+            return () => clearTimeout(restoreScrollTimer)
         } else {
-            document.body.style.overflow = ''
-        }
-        return () => {
             document.body.style.overflow = ''
         }
     }, [isVisible])
@@ -19,7 +23,7 @@ export default function SplashScreen() {
 
     return (
         <div
-            className="fixed inset-0 z-[9999] pointer-events-none animate-fade-out-splash"
+            className="fixed inset-0 z-[9999] pointer-events-none animate-fade-out-splash overflow-hidden"
             onAnimationEnd={(e) => {
                 // Only unmount when the fade-out animation completes
                 if (e.animationName === 'fade-out-splash') {

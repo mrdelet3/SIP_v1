@@ -142,7 +142,7 @@ body {
 
 .animate-scale-glass {
   /* No delay, start expanding immediately. Use a smoother ease-in curve. */
-  animation: scale-glass 3s cubic-bezier(0.5, 0, 0.8, 1) forwards;
+  animation: scale-glass 2.2s cubic-bezier(0.5, 0, 0.8, 1) forwards;
   /* Starts out scaled to 25% size */
   transform: scale(0.25);
 }
@@ -158,7 +158,7 @@ body {
 }
 
 .animate-fade-out-splash {
-  animation: fade-out-splash 0.3s 3s forwards;
+  animation: fade-out-splash 0.3s 1.9s forwards;
 }
 
 /* ─── Navbar scroll state (padding-only change on scroll) ──────────────────── */

@@ -26,14 +26,14 @@ export default function AboutSection() {
     return (
         <section
             id="about"
-            className="bg-secondary min-h-[100dvh] md:h-auto flex flex-col justify-center snap-start py-24 md:py-40 overflow-hidden"
+            className="bg-secondary h-[100dvh] flex flex-col justify-between snap-start pt-24 md:pt-40 pb-0 overflow-hidden"
             aria-labelledby="about-heading"
         >
             {/* Text + CTA block - Centered Container */}
-            <div className="max-w-6xl mx-auto px-6 w-full flex flex-col items-center mb-24 md:mb-32">
+            <div className="max-w-6xl mx-auto px-6 w-full flex flex-col items-center">
                 <div className="max-w-3xl w-full text-center flex flex-col items-center">
                     {/* Heading Section */}
-                    <div className="flex flex-col items-center mb-10 md:mb-14">
+                    <div className="flex flex-col items-center mb-6 md:mb-10">
                         <h2
                             id="about-heading"
                             className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-white font-bold tracking-[0.3em] uppercase leading-tight"
@@ -44,7 +44,7 @@ export default function AboutSection() {
                     </div>
 
                     {/* Paragraph */}
-                    <p className="text-gray-400 leading-relaxed font-sans font-light text-base md:text-xl mb-12 md:mb-16 max-w-2xl mx-auto px-4 md:px-0 opacity-90 tracking-wide">
+                    <p className="text-gray-400 leading-relaxed font-sans font-light text-base md:text-xl mb-8 md:mb-12 max-w-2xl mx-auto px-4 md:px-0 opacity-90 tracking-wide">
                         Our food brings the rich flavors of Ireland to your table, paired perfectly with our signature beers. Discover why we’re one of Cabbagetown’s best-kept secrets—come by and taste for yourself.
                     </p>
 
@@ -63,8 +63,8 @@ export default function AboutSection() {
                 </div>
             </div>
 
-            {/* Full-Width Gallery Strip */}
-            <div className="w-full relative py-4" aria-label="Photo gallery">
+            {/* Full-Width Gallery Strip - Pushed to absolute bottom */}
+            <div className="w-full relative mt-auto" aria-label="Photo gallery">
                 <div className="flex flex-wrap md:grid md:grid-cols-4 lg:grid-cols-7 gap-1 md:gap-2">
                     {GALLERY_IMAGES.map((img, idx) => (
                         <div
