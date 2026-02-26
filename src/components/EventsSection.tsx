@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { EVENTS_DATA as EVENTS, HAPPY_HOUR_ITEMS } from '../data/config'
+import { EVENTS_DATA as EVENTS, HAPPY_HOUR_ITEMS, SITE_CONFIG } from '../data/config'
 
 export default function EventsSection() {
-    const [isTriviaModalOpen, setIsTriviaModalOpen] = useState(false)
+    const [redirectEvent, setRedirectEvent] = useState<{ name: string; link: string; isMovie?: boolean } | null>(null)
 
     return (
         <section
@@ -24,17 +24,33 @@ export default function EventsSection() {
                         <ul className="space-y-4 md:space-y-8 mb-4 md:mb-14 mt-2" aria-label="Weekly events">
                             {EVENTS.map((event) => {
                                 const isTrivia = event.name.toLowerCase().includes('trivia')
+                                const hasLink = !!(event as any).link
+
+                                const handleClick = () => {
+                                    if (isTrivia) {
+                                        setRedirectEvent({
+                                            name: 'Head Scratchers Trivia',
+                                            link: 'https://www.headscratcherstrivia.com/reservationform'
+                                        })
+                                    } else if (hasLink) {
+                                        setRedirectEvent({
+                                            name: event.name,
+                                            link: (event as any).link
+                                        })
+                                    }
+                                }
+
                                 return (
                                     <li
                                         key={event.name}
-                                        className={`border-l border-white/10 pl-5 py-1 hover:border-gold transition-colors group ${isTrivia ? 'cursor-pointer' : 'cursor-default'}`}
-                                        onClick={() => isTrivia && setIsTriviaModalOpen(true)}
+                                        className={`border-l border-white/10 pl-5 py-1 hover:border-gold transition-colors group ${(isTrivia || hasLink) ? 'cursor-pointer' : 'cursor-default'}`}
+                                        onClick={handleClick}
                                     >
                                         <h3 className="font-display text-white text-sm md:text-base tracking-[0.2em] uppercase font-bold group-hover:text-gold transition-colors mb-0.5 flex items-center justify-between">
                                             {event.name}
-                                            {isTrivia && (
+                                            {(isTrivia || hasLink) && (
                                                 <span className="text-[10px] text-gold tracking-widest ml-4 font-sans opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                                                    book &rarr;
+                                                    {isTrivia ? 'book' : 'info'} &rarr;
                                                 </span>
                                             )}
                                         </h3>
@@ -89,8 +105,8 @@ export default function EventsSection() {
                 </div>
             </div>
 
-            {/* External Link Redirect Modal */}
-            {isTriviaModalOpen && (
+            {/* Event Info/Redirect Modal */}
+            {redirectEvent && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm animate-in fade-in duration-300">
                     <div
                         className="bg-[#1a1a1a] border border-gold/30 p-8 md:p-12 max-w-md w-full text-center relative overflow-hidden shadow-2xl"
@@ -99,31 +115,50 @@ export default function EventsSection() {
                         {/* Decorative background logo */}
                         <img src="/logo.png" className="absolute -top-12 -right-12 w-48 opacity-5 grayscale pointer-events-none" alt="" />
 
-                        <h3 className="font-display text-xl text-white font-bold tracking-[0.2em] uppercase mb-6">External Site</h3>
-                        <p className="font-sans text-gray-300 text-sm md:text-base leading-relaxed mb-8">
-                            You are about to be redirected to <span className="text-gold">Headscratchers Trivia</span> to fill out their official reservation form.
-                        </p>
+                        <h3 className="font-display text-xl text-white font-bold tracking-[0.2em] uppercase mb-6">
+                            {redirectEvent.isMovie ? 'Movie Night' : 'External Site'}
+                        </h3>
 
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button
-                                onClick={() => setIsTriviaModalOpen(false)}
-                                className="px-8 py-3 border border-white/10 text-[10px] uppercase font-bold text-white tracking-[0.2em] hover:bg-white/5 transition-all"
-                            >
-                                Cancel
-                            </button>
-                            <a
-                                href="https://www.headscratcherstrivia.com/reservationform"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => setIsTriviaModalOpen(false)}
-                                className="px-8 py-3 bg-gold text-[10px] uppercase font-bold text-black tracking-[0.2em] hover:bg-white transition-all shadow-lg"
-                            >
-                                Proceed
-                            </a>
-                        </div>
+                        {redirectEvent.isMovie ? (
+                            <div className="space-y-6 mb-8 text-center">
+                                <p className="font-sans text-gray-300 text-sm md:text-base leading-relaxed">
+                                    Give us a call to make a reservation for Sunday Movie Night.
+                                </p>
+                                <a
+                                    href={SITE_CONFIG.location.phoneHref}
+                                    className="block font-display text-2xl text-gold hover:text-white transition-colors py-2"
+                                >
+                                    {SITE_CONFIG.location.phoneLine}
+                                </a>
+                            </div>
+                        ) : (
+                            <p className="font-sans text-gray-300 text-sm md:text-base leading-relaxed mb-8">
+                                You are about to be redirected to <span className="text-gold">{redirectEvent.name}</span> to view their official event details.
+                            </p>
+                        )}
+
+                        {!redirectEvent.isMovie && (
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                <button
+                                    onClick={() => setRedirectEvent(null)}
+                                    className="px-8 py-3 border border-white/10 text-[10px] uppercase font-bold text-white tracking-[0.2em] hover:bg-white/5 transition-all"
+                                >
+                                    Cancel
+                                </button>
+                                <a
+                                    href={redirectEvent.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => setRedirectEvent(null)}
+                                    className="px-8 py-3 bg-gold text-[10px] uppercase font-bold text-black tracking-[0.2em] hover:bg-white transition-all shadow-lg"
+                                >
+                                    Proceed
+                                </a>
+                            </div>
+                        )}
                     </div>
                     {/* Click outside to close */}
-                    <div className="absolute inset-0 -z-10" onClick={() => setIsTriviaModalOpen(false)} />
+                    <div className="absolute inset-0 -z-10" onClick={() => setRedirectEvent(null)} />
                 </div>
             )}
         </section>

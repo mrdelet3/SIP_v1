@@ -1,4 +1,4 @@
-export type TabKey = 'starters' | 'mains' | 'sides' | 'drinks' | 'whiskeys'
+export type TabKey = 'starters' | 'mains' | 'brunch' | 'kids' | 'pawtio' | 'drinks'
 
 export interface MenuItem {
     name: string
@@ -45,10 +45,11 @@ export const EVENTS_DATA = [
     {
         name: 'Euchre Nite',
         schedule: 'Every Wednesday at 7:30PM',
+        link: 'https://www.meetup.com/euchre-fun/events/313287174/'
     },
     {
         name: 'Sunday Movie Night',
-        schedule: 'Every Sunday at 5PM',
+        schedule: 'Every Sunday at 5PM. Call to make a reservation.',
     },
 ]
 
@@ -61,128 +62,185 @@ export const HAPPY_HOUR_ITEMS = [
 export const MENU_TABS: { key: TabKey; label: string }[] = [
     { key: 'starters', label: 'Starters' },
     { key: 'mains', label: 'Mains' },
-    { key: 'sides', label: 'Sides' },
-    { key: 'drinks', label: 'Stouts & Ales' },
-    { key: 'whiskeys', label: 'Whiskeys' },
+    { key: 'brunch', label: 'Brunch' },
+    { key: 'kids', label: 'Kids' },
+    { key: 'pawtio', label: 'Pawtio Bites' },
+    { key: 'drinks', label: 'Drinks' },
 ]
 
 export const MENU_DATA: Record<TabKey, MenuItem[]> = {
     starters: [
         {
-            name: 'Potato Leek Soup',
+            name: 'Stout Nachos',
+            price: '$18',
+            description:
+                'House-cut corn tortillas, pickled jalapenos, shredded cheddar, cherry tomato, scallions, dressed with sour cream & salsa. Add: guacamole +5 | bacon +5 | grilled chicken breast +8',
+        },
+        {
+            name: 'Pretzel & Dijon',
             price: '$12',
-            description:
-                'Creamy traditional soup topped with crispy leeks and a drizzle of truffle oil.',
+            description: 'Giant buttered & salted pretzel with Dijon mustard.',
         },
         {
-            name: 'Irish Boxty',
+            name: 'Curry Cheese Fries',
             price: '$16',
-            description:
-                'Traditional potato pancakes filled with sautéed mushrooms and a sharp cheddar sauce.',
+            description: 'Hand-cut fries topped with shredded cheddar and Madras curry sauce.',
         },
         {
-            name: 'Smoked Salmon Bites',
-            price: '$15',
-            description:
-                'House-cured Atlantic salmon on soda bread rounds with crème fraîche and capers.',
+            name: 'Garlic Bacon Cheese Fries',
+            price: '$16',
+            description: 'Hand-cut fries topped with garlic aioli, bacon, shredded cheddar, scallions.',
         },
         {
-            name: 'Guinness Battered Onion Rings',
+            name: 'Onion Rings',
             price: '$11',
-            description:
-                'Thick-cut rings in a crispy Guinness batter, served with house aioli.',
+            description: 'Battered onion rings fried golden, served with chipotle aioli.',
+        },
+        {
+            name: 'San Marzano Tomato Soup',
+            price: '$11',
+            description: 'Creamy san Marzano tomato soup with fresh grated parmesan & toasted bread.',
         },
     ],
     mains: [
         {
-            name: 'Guinness Stew',
-            price: '$18',
-            description:
-                'Tender beef braised in Guinness with root vegetables and fresh herbs, served with homemade soda bread.',
-        },
-        {
-            name: 'Fish and Chips',
+            name: 'Bangers Beans and Mash',
             price: '$22',
-            description:
-                'Atlantic cod in a crispy beer batter, served with hand-cut fries, minted peas, and tartar sauce.',
+            description: '3 Farmers sausages with baked beans, champ potato and gravy.',
         },
         {
-            name: 'Shepherd\'s Pie',
+            name: 'Cottage Pie',
+            price: '$23',
+            description: 'Ground beef with peas, carrots and onions, simmered with red wine, topped with mashed potatoes.',
+        },
+        {
+            name: 'Fish & Chips',
+            price: '$22',
+            description: 'Hand-battered haddock, fried to order, hand-cut fries, creamy coleslaw, tartar sauce. Add: Gravy +$2.50',
+        },
+        {
+            name: 'Chicken Tenders',
             price: '$20',
-            description:
-                'Slow-cooked lamb mince with root vegetables, topped with buttery mashed potato and baked golden.',
+            description: 'Buttermilk soaked chicken tenders, served with creamy coleslaw, choice of plum, ranch, BBQ, Honey Garlic, or Buffalo hot for dipping. Choice of side.',
         },
         {
-            name: 'Bangers & Mash',
-            price: '$17',
-            description:
-                'Two Irish pork sausages on creamy mashed potato with caramelised onion gravy.',
+            name: 'Wings & Frings',
+            price: '$25',
+            description: '1 lb chicken wings, hand-cut fries, onion rings, veggie sticks, blue cheese or ranch for dipping. Choice of: BBQ | BUFFALO HOT | HONEY GARLIC | DRY CAJUN | DRY CARIBBEAN | SALT & PEPPER',
+        },
+        {
+            name: 'The Stout Burger',
+            price: '$20',
+            description: 'Charbroiled beef patty, lettuce, tomato, onion, pickles, burger sauce. Choice of side. Add: Cheese $2 | Bacon $3 | Fried Egg $2 | Gorgonzola $2 | Sauteed Mushrooms $2 | Beef Patty $6.50',
         },
     ],
-    sides: [
+    brunch: [
         {
-            name: 'Colcannon',
-            price: '$8',
-            description: 'Irish mashed potato with savoy cabbage, spring onion, and butter.',
+            name: 'Full Irish Breakfast',
+            price: '$20',
+            description: '2 fried eggs, 2 Irish rashers, 2 Irish bangers, black & white pudding, mushrooms, grilled tomato, Heinz beans, toast.',
         },
         {
-            name: 'Soda Bread',
-            price: '$6',
-            description: 'Fresh-baked traditional Irish soda bread with whipped butter.',
+            name: 'Eggs Benedict',
+            price: '$16',
+            description: '2 soft poached eggs with strip bacon on an English muffin with house made Hollandaise sauce and paprika. Side of Cajun dusted home fries or salad.',
         },
         {
-            name: 'Hand-Cut Fries',
-            price: '$7',
-            description: 'Thick-cut fries seasoned with sea salt and fresh herbs.',
+            name: 'Mushroom Benedict',
+            price: '$16',
+            description: '2 soft poached eggs with sautéed mushrooms on an English muffin with house made Hollandaise sauce and paprika. Side of Cajun dusted home fries or salad.',
         },
         {
-            name: 'Dressed Side Salad',
-            price: '$7',
-            description: 'Mixed greens, tomato, cucumber, and house vinaigrette.',
+            name: 'Classic Canadian',
+            price: '$16',
+            description: '3 eggs any style with strip bacon or sausage, grilled tomato, Cajun dusted home fries and toast.',
+        },
+    ],
+    kids: [
+        {
+            name: 'CHICKEN STRIPS \'N FRIES',
+            price: '$12',
+            description: 'Boneless Chicken breast, frites, plum sauce',
+        },
+        {
+            name: 'Mini Fish N\' Chips',
+            price: '$12',
+            description: 'Filet of haddock, frites, tartar sauce',
+        },
+        {
+            name: 'PLAIN CHEESE BURGER',
+            price: '$12',
+            description: '6oz. single patty with cheese and frites',
+        },
+        {
+            name: 'Mini Cheese Pizza',
+            price: '$12',
+            description: 'Oven baked naan bread, tomato sauce, cheddar, mozzarella.',
+        },
+        {
+            name: 'Mini Nachos',
+            price: '$12',
+            description: 'Corn tortillas baked with cheddar cheese and salsa on the side',
+        },
+    ],
+    pawtio: [
+        {
+            name: 'Mashed Potatoes & Gravy',
+            price: '$6 / $9',
+            description: '',
+        },
+        {
+            name: 'Pup Cup',
+            price: '$2 / $3',
+            description: '',
+        },
+        {
+            name: 'Raw Veal Bone',
+            price: '$5 / $8',
+            description: '',
+        },
+        {
+            name: 'Chicken and Rice',
+            price: '$7 / $11',
+            description: '',
+        },
+        {
+            name: 'Sirloin Tip',
+            price: '$8 / $11',
+            description: '',
+        },
+        {
+            name: '2 Strip Bacon',
+            price: '$4',
+            description: '',
         },
     ],
     drinks: [
         {
-            name: 'Guinness Draught',
-            price: '$9',
-            description: 'The iconic Irish stout — poured slow and perfect every time.',
+            name: 'Sip Lager',
+            price: '$8.50',
+            description: 'North American style Lager. ( 5% alc/vol ) 16oz.',
         },
         {
-            name: 'Smithwick\'s Irish Red Ale',
-            price: '$8',
-            description: 'Ireland\'s oldest ale. Smooth, malty, and sessionable.',
+            name: 'LCBW PILSNER',
+            price: '$8.50',
+            description: 'German style Pilsner. 4.7 % alc/vol, 16oz',
         },
         {
-            name: 'Harp Lager',
-            price: '$8',
-            description: 'Crisp and refreshing Irish lager on draught.',
+            name: 'Pommies Farmhouse Cider',
+            price: '$9.25',
+            description: 'Exemplifies the crisp, fresh fruit qualities of our orchard-ripened apples with subtle undertones of bittersweet cider apples. %6.5 alc',
         },
         {
-            name: 'Seasonal Craft',
-            price: '$10',
-            description: 'Ask your server for today\'s rotating craft tap selection.',
+            name: 'Great Lakes Stout, GLB',
+            price: '$8.95',
+            description: 'Aromas of chocolate and lightly roasted coffee beans. Bitter chocolate, roasted malt, and espresso notes. 4.3 ABV, 16oz.',
+        },
+        {
+            name: 'MURPHY\'S IRISH STOUT',
+            price: '$10.95',
+            description: 'Irish Dry Stout from Cork, Ireland. (4% alc/vol) 16 oz',
         },
     ],
-    whiskeys: [
-        {
-            name: 'Jameson',
-            price: '$9',
-            description: 'The world\'s most popular Irish whiskey — smooth, balanced, unmistakable.',
-        },
-        {
-            name: 'Bushmills 10yr',
-            price: '$14',
-            description: 'Single malt aged 10 years. Honey, floral, and rich vanilla notes.',
-        },
-        {
-            name: 'Redbreast 12yr',
-            price: '$16',
-            description: 'A celebrated single pot still — complex, fruity, and long-finishing.',
-        },
-        {
-            name: 'Powers Gold Label',
-            price: '$10',
-            description: 'The quintessential Dublin whiskey. Spiced and warming.',
-        },
-    ],
+
 }

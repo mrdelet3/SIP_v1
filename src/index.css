@@ -181,7 +181,7 @@ body {
   justify-content: center;
   gap: 0.75rem;
   padding: 1.25rem 3rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Cinzel', serif;
   font-weight: 700;
   font-size: 11px;
   text-transform: uppercase;
@@ -207,7 +207,7 @@ body {
 
 /* Filled variant: gold fill + white text → white fill + dark text on hover */
 .btn-site--filled {
-  color: #ffffff;
+  color: #141414;
   background-color: #C5A059;
   border-color: #C5A059;
 }

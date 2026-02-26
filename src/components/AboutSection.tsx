@@ -2,36 +2,44 @@ import { useState } from 'react'
 
 const GALLERY_IMAGES = [
     {
-        src: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Warm and inviting interior of Stout Irish Pub',
+        src: '/gallery/Turn_this_exterior_4k_202602241945.jpeg',
+        alt: 'Classic exterior of Stout Irish Pub in Cabbagetown',
     },
     {
-        src: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Hearty Irish stew with bread, a traditional pub dish',
+        src: '/gallery/Turn_this_interior_4k_202602241919.jpeg',
+        alt: 'Warm and inviting atmospheric interior of the pub',
     },
     {
-        src: 'https://images.unsplash.com/photo-1538488881038-e252a119ace7?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Selection of craft beer taps behind the bar',
+        src: '/gallery/Turn_this_photo_4k_202602242223 (4).jpeg',
+        alt: 'Delicious food and drink pairings',
     },
     {
-        src: 'https://images.unsplash.com/photo-1566633806327-68e152aaf26d?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Gourmet bar food on a rustic table',
+        src: '/gallery/Change_to_night_4k_202602242104.jpeg',
+        alt: 'Cozy pub atmosphere at night',
     },
     {
-        src: 'https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Atmospheric pub interior at dusk',
+        src: '/gallery/Turn_this_display_4k_202602241854.jpeg',
+        alt: 'A wide selection of Ontario craft beers on tap',
     },
     {
-        src: 'https://images.unsplash.com/photo-1581375221970-d86898d9cc2c?q=80&w=1200&auto=format&fit=crop',
-        alt: 'A perfectly poured pint of dark stout beer',
+        src: '/gallery/Remove_the_cutlery_4k_202602242233.jpeg',
+        alt: 'Authentic Irish cuisine served fresh',
     },
     {
-        src: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Cozy fireplace seating area in the pub',
+        src: '/gallery/Turn_this_photo_4k_202602242022.jpeg',
+        alt: 'Perfectly poured pints of local stout and ale',
     },
     {
-        src: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Classic Irish breakfast ingredients on a rustic table',
+        src: '/gallery/Turn_this_photo_4k_202602242026.jpeg',
+        alt: 'Rustic wood finishes and traditional pub decor',
+    },
+    {
+        src: '/gallery/Turn_this_photo_4k_202602242150.jpeg',
+        alt: 'Warm lighting casting a friendly glow over the bar',
+    },
+    {
+        src: '/gallery/Turn_this_photo_4k_202602242223 (7).jpeg',
+        alt: 'Hearty pub meals and friendly local service',
     },
 ]
 
@@ -46,24 +54,25 @@ export default function AboutSection() {
         >
             {/* Text + CTA block */}
             <div className="max-w-6xl mx-auto px-6 md:px-6 w-full flex flex-col items-center">
-                <div className="max-w-2xl w-full mx-auto text-center">
-                    <div className="text-center mb-1 md:mb-20 h-24 flex flex-col items-center justify-center">
+                <div className="max-w-3xl w-full mx-auto text-center flex flex-col items-center">
+                    {/* Heading Section */}
+                    <div className="text-center mb-12 md:mb-20 flex flex-col items-center">
                         <h2
                             id="about-heading"
-                            className="font-display text-xl sm:text-3xl md:text-5xl text-white font-bold tracking-[0.25em] uppercase"
+                            className="font-display text-2xl sm:text-3xl md:text-5xl text-white font-bold tracking-[0.25em] uppercase leading-tight"
                         >
                             Authentic Irish
                         </h2>
-                        <div className="w-10 md:w-16 h-px bg-gold/30 mt-4 md:mt-8" aria-hidden="true" />
+                        <div className="w-12 md:w-16 h-px bg-gold/40 mt-6 md:mt-10" aria-hidden="true" />
                     </div>
 
-                    <p className="text-gray-400 leading-relaxed font-light text-sm md:text-lg font-sans mb-10 max-w-lg mx-auto">
-                        Experience a perfect representation of Ireland's rich tradition. Savor authentic dishes
-                        while sipping one of our signature stouts. Toronto's (Cabbagetown) best kept secret awaits.
+                    {/* Paragraph */}
+                    <p className="text-gray-400 leading-relaxed font-sans font-light text-base md:text-lg mb-12 md:mb-16 max-w-xl mx-auto px-4 md:px-0 opacity-90">
+                        Our food brings the rich flavors of Ireland to your table, paired perfectly with our signature beers. Discover why we’re one of Cabbagetown’s best-kept secrets—come by and taste for yourself.
                     </p>
 
                     {/* Group Reservation CTA */}
-                    <div className="flex flex-col items-center gap-6 mb-12 md:mb-20">
+                    <div className="flex flex-col items-center mb-16 md:mb-24">
                         <a
                             href="https://www.opentable.com/r/stout-irish-pub-toronto"
                             target="_blank"
@@ -73,19 +82,17 @@ export default function AboutSection() {
                         >
                             Book a Group Reservation
                         </a>
-                        <p className="font-serif text-gray-500 text-xs italic tracking-widest opacity-80">
-                            Groups of 10 or more · Reserve via OpenTable
-                        </p>
                     </div>
                 </div>
 
                 {/* Gallery Strip — Grid Layout (Standardized to 6 images) */}
                 <div className="w-full" aria-label="Photo gallery">
-                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
-                        {GALLERY_IMAGES.slice(0, 6).map((img, idx) => (
+                    <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2 md:gap-4">
+                        {GALLERY_IMAGES.slice(0, 10).map((img, idx) => (
                             <div
                                 key={img.alt + idx}
-                                className="relative aspect-[4/3] overflow-hidden rounded-sm cursor-pointer group"
+                                className={`relative aspect-[4/3] overflow-hidden rounded-sm cursor-pointer group ${idx >= 6 ? 'hidden xl:block' : ''
+                                    }`}
                                 onClick={() => setSelectedImg(img)}
                             >
                                 <img

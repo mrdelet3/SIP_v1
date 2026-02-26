@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Download } from 'lucide-react'
 import PdfMenuButton from './PdfMenuButton'
 
 import { RETAIL_ITEMS } from '../data/config'
@@ -83,8 +83,18 @@ function MobileDrawerContent({ onClose: _onClose }: { onClose: () => void }) {
                 </a>
             </div>
 
-            {/* PDF Download — mobile only */}
-            <div className="pt-4 pb-4">
+            {/* Menu Links — mobile only */}
+            <div className="pt-4 pb-4 flex flex-col gap-4">
+                <a
+                    href="https://stoutirishpub.ca/features"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-site celtic-hover w-full justify-center"
+                >
+                    <span>FEATURE MENU</span>
+                    <Download className="w-4 h-4 ml-2" aria-hidden="true" />
+                </a>
+
                 <PdfMenuButton className="w-full justify-center" />
             </div>
         </>

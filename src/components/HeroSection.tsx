@@ -24,7 +24,7 @@ export default function HeroSection() {
                     Authentic Irish<br />Experience
                 </h1>
                 <p className="font-serif text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl leading-relaxed mb-12 italic">
-                    Welcome to Stout Irish Pub, the perfect place for an authentic pub experience. Join us for a pint or two.
+                    Welcome to Stout Irish Pub, your spot for an authentic pub experience in Cabbagetown. Enjoy great food, a wide selection of Ontario craft beer, and a relaxed atmosphere with over 50 board games. Pull up a chair, grab a pint, and join the locals.
                 </p>
 
                 {/* Custom Celtic Divider — Replacing plain stroke */}
