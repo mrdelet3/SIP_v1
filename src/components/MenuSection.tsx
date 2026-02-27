@@ -107,14 +107,14 @@ export default function MenuSection() {
 
             <div className="max-w-6xl mx-auto px-6 md:px-6 w-full flex-1 flex flex-col items-center relative z-10 min-h-0 md:justify-center">
                 {/* Heading */}
-                <div className="text-center mb-6 md:mb-16 flex flex-col items-center justify-center">
+                <div className="text-center mb-10 md:mb-16 flex flex-col items-center justify-center">
                     <h2
                         id="menu-heading"
-                        className="font-display text-lg sm:text-3xl md:text-5xl text-white font-bold tracking-[0.25em] uppercase"
+                        className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-white font-bold tracking-[0.3em] uppercase leading-tight"
                     >
                         Menu
                     </h2>
-                    <div className="w-8 md:w-16 h-px bg-gold/30 mt-2 md:mt-8" aria-hidden="true" />
+                    <div className="w-16 md:w-24 h-px bg-gold/40 mt-8 md:mt-12" aria-hidden="true" />
                 </div>
 
                 {/* Tabs */}

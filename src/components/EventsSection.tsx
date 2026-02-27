@@ -10,89 +10,90 @@ export default function EventsSection() {
             className="bg-secondary h-[100dvh] flex flex-col justify-start md:justify-center snap-start pt-24 pb-0 md:py-0 overflow-hidden md:overflow-visible relative"
             aria-labelledby="events-heading"
         >
-            <div className="max-w-5xl mx-auto px-6 md:px-6 w-full flex-1 flex flex-col min-h-0 overflow-y-auto overflow-x-hidden hide-scrollbar pb-24 md:pb-0">
-                <div className="md:max-w-2xl lg:max-w-none mx-auto w-full">
-                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 items-start">
+            <div className="max-w-6xl mx-auto px-6 md:px-12 w-full flex-1 flex flex-col justify-start md:justify-center min-h-0 overflow-y-auto overflow-x-hidden hide-scrollbar pb-24 md:pb-0">
+                <div className="md:max-w-3xl lg:max-w-none mx-auto w-full pt-8 md:pt-0">
+                    <div className="grid lg:grid-cols-2 lg:divide-x lg:divide-white/10 items-start">
 
                         {/* Events column */}
-                        <div className="lg:border-r lg:border-white/10 lg:pr-16">
-                            <div className="text-center mb-4 md:mb-20 md:h-24 flex flex-col items-center justify-center">
-                                <h2 id="events-heading" className="font-display text-xl sm:text-3xl md:text-5xl text-white font-bold tracking-[0.25em] uppercase">Weekly Events</h2>
-                                <div className="w-10 md:w-16 h-px bg-gold/30 mt-4 md:mt-8" aria-hidden="true" />
+                        <div className="lg:pr-16 lg:pt-8 flex flex-col items-center">
+                            <div className="text-center mb-10 md:mb-16 flex flex-col items-center justify-center">
+                                <h2 id="events-heading" className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-white font-bold tracking-[0.3em] uppercase leading-tight">
+                                    Weekly<br />Events
+                                </h2>
+                                <div className="w-16 md:w-24 h-px bg-gold/40 mt-8 md:mt-12" aria-hidden="true" />
                             </div>
 
-                            <ul className="space-y-4 md:space-y-8 mb-4 md:mb-14 mt-2" aria-label="Weekly events">
-                                {EVENTS.map((event) => {
-                                    const isTrivia = event.name.toLowerCase().includes('trivia')
-                                    const hasLink = !!(event as any).link
+                            <div className="w-fit">
+                                <ul className="space-y-8 md:space-y-12 mb-12 md:mb-16 mt-2 text-left" aria-label="Weekly events">
+                                    {EVENTS.map((event) => {
+                                        const isTrivia = event.name.toLowerCase().includes('trivia')
+                                        const hasLink = !!(event as any).link
 
-                                    const handleClick = () => {
-                                        if (isTrivia) {
-                                            setRedirectEvent({
-                                                name: 'Head Scratchers Trivia',
-                                                link: 'https://www.headscratcherstrivia.com/reservationform'
-                                            })
-                                        } else if (hasLink) {
-                                            setRedirectEvent({
-                                                name: event.name,
-                                                link: (event as any).link
-                                            })
+                                        const handleClick = () => {
+                                            if (isTrivia) {
+                                                setRedirectEvent({
+                                                    name: 'Head Scratchers Trivia',
+                                                    link: 'https://www.headscratcherstrivia.com/reservationform'
+                                                })
+                                            } else if (hasLink) {
+                                                setRedirectEvent({
+                                                    name: event.name,
+                                                    link: (event as any).link
+                                                })
+                                            }
                                         }
-                                    }
 
-                                    return (
-                                        <li
-                                            key={event.name}
-                                            className={`border-l border-white/10 pl-5 py-1 hover:border-gold transition-colors group ${(isTrivia || hasLink) ? 'cursor-pointer' : 'cursor-default'}`}
-                                            onClick={handleClick}
-                                        >
-                                            <h3 className="font-display text-white text-sm md:text-base tracking-[0.2em] uppercase font-bold group-hover:text-gold transition-colors mb-0.5 flex items-center justify-between">
-                                                {event.name}
-                                                {(isTrivia || hasLink) && (
-                                                    <span className="text-[10px] text-gold tracking-widest ml-4 font-sans opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                                                        {isTrivia ? 'book' : 'info'} &rarr;
-                                                    </span>
-                                                )}
-                                            </h3>
-                                            <p className="font-sans font-light text-gray-400 text-xs md:text-sm">
-                                                {event.schedule}
-                                            </p>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
+                                        return (
+                                            <li
+                                                key={event.name}
+                                                className={`py-1 transition-colors group ${(isTrivia || hasLink) ? 'cursor-pointer' : 'cursor-default'}`}
+                                                onClick={handleClick}
+                                            >
+                                                <h3 className="font-display text-white text-base md:text-lg tracking-[0.2em] uppercase font-bold group-hover:text-gold transition-colors mb-2">
+                                                    {event.name}
+                                                </h3>
+                                                <p className="font-sans font-light text-gray-400 text-xs md:text-sm tracking-widest uppercase">
+                                                    {event.schedule}
+                                                </p>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
 
-                            <div className="flex justify-center pt-8 pb-4 md:pb-0">
-                                <a
-                                    href="https://www.instagram.com/stoutirishpubto/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="btn-site glow-gold mx-auto"
-                                    aria-label="Follow Stout Irish Pub on Instagram for upcoming events"
-                                >
-                                    Follow for Events
-                                </a>
+                                <div className="flex justify-start pt-4 pb-8 md:pb-0">
+                                    <a
+                                        href="https://www.instagram.com/stoutirishpubto/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="btn-site glow-gold"
+                                        aria-label="Follow Stout Irish Pub on Instagram for upcoming events"
+                                    >
+                                        Follow for Events
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
                         {/* Happy Hour column */}
-                        <div className="lg:pl-16">
-                            <div className="text-center mb-4 md:mb-20 md:h-24 flex flex-col items-center justify-center pt-8 md:pt-0">
-                                <h2 className="font-display text-xl sm:text-3xl md:text-5xl text-white font-bold tracking-[0.25em] uppercase">Happy Hour</h2>
-                                <div className="w-10 md:w-16 h-px bg-gold/30 mt-4 md:mt-8" aria-hidden="true" />
+                        <div className="lg:pl-16 lg:pt-8 flex flex-col items-center">
+                            <div className="text-center mb-10 md:mb-16 flex flex-col items-center justify-center pt-12 lg:pt-0">
+                                <h2 className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-white font-bold tracking-[0.3em] uppercase leading-tight">
+                                    Happy<br />Hour
+                                </h2>
+                                <div className="w-16 md:w-24 h-px bg-gold/40 mt-8 md:mt-12" aria-hidden="true" />
                             </div>
 
-                            <div className="mt-2">
-                                <p className="font-serif font-light text-gray-300 text-sm md:text-lg leading-relaxed italic mb-4 md:mb-8 text-left md:text-right">
+                            <div className="mt-2 text-center lg:text-right w-full max-w-sm">
+                                <p className="font-serif font-light text-gray-300 text-sm md:text-lg leading-relaxed italic mb-10 md:mb-16 mx-auto lg:ml-auto lg:mr-0">
                                     Experience the nocturnal charm of Stout Irish Pub with our 'Happy Hour'.
                                 </p>
 
-                                <div className="space-y-4 md:space-y-8 flex flex-col items-start md:items-end pr-14 md:pr-0">
-                                    <div className="text-left md:text-right border-l border-white/10 pl-5 md:pl-0 md:border-l-0 md:pr-0">
-                                        <h3 className="font-display text-white text-sm md:text-base tracking-[0.2em] uppercase font-bold mb-1">
+                                <div className="space-y-8 md:space-y-12 flex flex-col items-center lg:items-end">
+                                    <div className="text-center lg:text-right">
+                                        <h3 className="font-display text-white text-base md:text-lg tracking-[0.2em] uppercase font-bold mb-3">
                                             Everyday 9:00 PM — 11:00 PM
                                         </h3>
-                                        <div className="font-serif text-gray-400 text-sm md:text-base tracking-widest uppercase flex flex-col items-start md:items-end gap-1">
+                                        <div className="font-serif text-gray-400 text-sm md:text-base tracking-widest uppercase flex flex-col gap-2 items-center lg:items-end">
                                             {HAPPY_HOUR_ITEMS.map((item) => (
                                                 <span key={item}>{item}</span>
                                             ))}
